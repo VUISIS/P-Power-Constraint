@@ -5,10 +5,12 @@
 //
 // Implementation: This machine has a built-in battery model, and it is standalone,
 // given the initial battery percentage and landing_threshold.
+//
+// Properties:
+// safety property: when the battery deplets, the drone should always land at
+//                  the origin.
+// liveness property: the drone eventually lands at the origin
 
-// type tPingResponse = (source : Ping);
-
-// event ePing: tPingResponse;
 event eStartBatteryFailSafe;
 event eUpdateBatteryPercentage;
 event eLanding;

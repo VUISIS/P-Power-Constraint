@@ -3,8 +3,6 @@
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PowerConstraint.runtimeconfig.json
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PowerConstraint.dll
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PowerConstraint.pdb
-/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PCheckerCore.dll
-/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PCSharpRuntime.dll
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PCSharpRuntime.pdb
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PCheckerCore.pdb
 /Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PGenerated/CSharp/net6.0/PCheckerCore.xml

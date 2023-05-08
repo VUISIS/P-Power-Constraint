@@ -7,6 +7,10 @@
 // Implementation: The machine has a simplistic built-in movement model, which increments the distance to origin
 // by 1 unit every 1 second. The machine will start the holding pattern when the distance to origin is greater than
 // the maximum distance allowed (defined by the genfence)
+//
+// Properties to check:
+// safety property: drone should never cross the Fence
+//
 
 type tDroneMovementResponse = (horizontal_movement : int, vertical_movement : int);
 
@@ -45,13 +49,13 @@ machine GeoFence
   }
 
   state Monitoring {
-    on eStartGenFence, eFenceDistanced {
+    on eStartGeoFence, eFenceDistanced do {
       // start the drone movement generator
       send this, eRequestDroneMovement;
       goto GenerateMovement;
     }
       
-    on eGetDroneMovement do (response : tDroneMovementResponse) {
+    on eDroneMovementResponse do (response : tDroneMovementResponse) {
       
       // check if the drone is within the fence
       // exceeded fence radius
@@ -71,15 +75,15 @@ machine GeoFence
       // update the drone's location normally
       else {
         // update the drone's position
-        drone_altitude += response.vertical_movement;
-        drone_horizontal_distance_to_origin += response.horizontal_movement;
+        drone_altitude = drone_altitude + response.vertical_movement;
+        drone_horizontal_distance_to_origin = drone_horizontal_distance_to_origin + response.horizontal_movement;
       }
     }
   }
 
   // temporarily holding the drone.
   state Holding {
-    on eFenceReached {
+    on eFenceReached do {
       // start holding pattern
       print "Fence Reached! Starting Holding Pattern";
 
@@ -89,7 +93,7 @@ machine GeoFence
   }
 
   state GenerateMovement {
-    on eRequestDroneMovement {
+    on eRequestDroneMovement do {
       var response : tDroneMovementResponse;
 
       // generate random movement from -10 ~ 10
