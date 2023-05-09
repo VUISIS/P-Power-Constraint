@@ -92,6 +92,7 @@ machine BatteryFailSafeModified
 
   state Landing {
     entry {
+      // TODO: return to launch point
       print "Landing initiated!";
       send this, eLanded;
       goto Landed;
