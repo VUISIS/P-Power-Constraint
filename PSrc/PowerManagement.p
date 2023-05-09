@@ -17,6 +17,12 @@ event eBatteryThresholdRequest: tBatteryThresholdRequest;
 type tUpdateDroneBattery = (batteryPercentage: float);
 event eUpdateDroneBatteryRequest: tUpdateDroneBattery;
 
+type tDroneMovementDistanceResponse = (droneMovementDistance: float);
+event eDroneMovementDistanceResponse: tDroneMovementDistanceResponse;
+
+type tDroneMovementDistanceRequest = (source: BatteryFailSafeModified);
+event eDroneMovementDistanceRequest: tDroneMovementDistanceRequest;
+
 // for communicating with the GeoFence state machine
 type tFenceRadiusRequest = (source: GeoFenceModified);
 event eFenceRadiusRequest: tFenceRadiusRequest;
@@ -24,20 +30,20 @@ event eFenceRadiusRequest: tFenceRadiusRequest;
 type tFenceRadiusResponse = (fenceRadius: float);
 event eFenceRadiusResponse: tFenceRadiusResponse;
 
-type tUpdateDroneMovementAndPosition = (droneMovement: float, droneHorizontalPosition: float, droneVerticalPosition: float);
-event eUpdateDroneMovementAndPosition: tUpdateDroneMovementAndPosition;
+type tUpdateDroneMovementDistanceAndPosition = (droneMovementDistance: float, droneHorizontalPosition: float, droneVerticalPosition: float);
+event eUpdateDroneMovementDistanceAndPosition: tUpdateDroneMovementDistanceAndPosition;
 
 machine PowerManagement {
   // state machines
   var batteryFailSafeMachine: BatteryFailSafeModified;
   var genFenceMachine: GeoFenceModified;
-  var powerConsumptionRate: float;
+  var powerConsumptionRate: float; // percentage per meter
 
   // cached parameters, these parameter might be delayed
   var batteryPercentage: float;
   var droneHorizontalPosition: float;  // relative to the origin
   var droneVerticalPosition: float;    // relative to the origin
-  var cumulativeDroneMovement: float;  // cumulative movement of the drone
+  var cumulativeDroneMovementDistance: float;  // cumulative movement of the drone
 
   start state Init {
     entry {
@@ -53,9 +59,13 @@ machine PowerManagement {
     ////////////////////////////////////////////////
 
     // requests for calculating certain parameters
+    // How to calculate battery threshold?
+    // battery_threshold = distance_to_origin * battery_consumption_rate
     on eBatteryThresholdRequest do (request: tBatteryThresholdRequest) {
-      // TODO: change the calculation of battery threshold
-      send request.source, eBatteryThresholdResponse, (batteryThreshold = 0.0,);
+      // Problem: no square root function build in in P
+      // distance_to_origin = sqrt(droneHorizontalPosition * droneHorizontalPosition + droneVerticalPosition * droneVerticalPosition);
+
+      send request.source, eBatteryThresholdResponse, (batteryThreshold = (droneHorizontalPosition + droneVerticalPosition) * powerConsumptionRate,);
     }
 
     // calculate the battery percentage based on the cache
@@ -63,20 +73,31 @@ machine PowerManagement {
       batteryPercentage = request.batteryPercentage;
     }
 
+    // requests for calculating the drone movement
+    on eDroneMovementDistanceRequest do (request: tDroneMovementDistanceRequest) {
+      send request.source, eDroneMovementDistanceResponse, (droneMovementDistance = cumulativeDroneMovementDistance,);
+      // reset the variable that stores drone movement distance
+      cumulativeDroneMovementDistance = 0.0;
+    }
+
     //////////////////////////////////////////////////////
     // REQUEST FROM FenceFailSafeModified STATE MACHINE //
     //////////////////////////////////////////////////////
     
     // request for calculating the fence radius
+    // How to calculate the fence radius?
+    // R_fence = ((current_battery / power_consumption_rate) + distance_to_origin) / 2
     on eFenceRadiusRequest do (request: tFenceRadiusRequest) {
       // TODO: change the calculation of fence radius
-      send request.source, eFenceRadiusResponse, (fenceRadius = 0.0,);
+      var distance_to_origin: float;
+      distance_to_origin = droneHorizontalPosition + droneVerticalPosition;
+      send request.source, eFenceRadiusResponse, (fenceRadius = ((batteryPercentage / powerConsumptionRate) + distance_to_origin) / 2.0,);
     }
 
-    on eUpdateDroneMovementAndPosition do (request: tUpdateDroneMovementAndPosition) {
+    on eUpdateDroneMovementDistanceAndPosition do (request: tUpdateDroneMovementDistanceAndPosition) {
       droneHorizontalPosition = request.droneHorizontalPosition;
       droneVerticalPosition = request.droneVerticalPosition;
-      cumulativeDroneMovement = cumulativeDroneMovement + request.droneMovement;
+      cumulativeDroneMovementDistance = cumulativeDroneMovementDistance + request.droneMovementDistance;
     }
   }
 
