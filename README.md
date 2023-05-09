@@ -69,4 +69,4 @@ p check -tc <test-case>
 
 # TODO
 - change action for battery fail safe
-  - make sure it returns to origin instead of land at its spot
+  - make sure it returns to origin instead of land at its spot. This can be done by creating a new event that is passed to GeoFenceModified via PowerManager, because GeoFenceModified keeps track of the location of the drone.
