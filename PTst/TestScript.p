@@ -1,6 +1,10 @@
-test tc [main=Test_GeoFence]:
-  assert AlwaysCorrect in
-  (union GeoFence, BatteryFailSafe, { Test_GeoFence });
+test battery [main=Test_BatteryFailSafe]:
+  assert BatteryFailSafeSpec in
+    (union BatteryFailSafe, { Test_BatteryFailSafe });
+
+test geofence [main=Test_GeoFence]:
+  assert GeoFenceSpec in
+  (union GeoFence, { Test_GeoFence });
 
 // test waypoint [main=Test_Waypoint]:
 //   assert WaypointCorrect in

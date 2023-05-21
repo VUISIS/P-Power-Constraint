@@ -11,7 +11,9 @@
 //                  the origin.
 // liveness property: the drone eventually lands at the origin
 
-event eStartBatteryFailSafe;
+type tStartBatteryFailSafe =  (landing_threshold_amount : int);
+
+event eStartBatteryFailSafe: tStartBatteryFailSafe;
 event eUpdateBatteryPercentage;
 event eLanding;
 event eLanded;
@@ -30,7 +32,7 @@ machine BatteryFailSafe
 
       print "Battery Fail Safe Enabled!";
 
-      send this, eStartBatteryFailSafe;
+      send this, eStartBatteryFailSafe, (landing_threshold_amount = landing_threshold_local,);
       goto Monitoring;
     }
   }
@@ -62,7 +64,7 @@ machine BatteryFailSafe
   }
 
   state Landing {
-    entry {
+    on eLanding do {
       print "Landing initiated!";
       send this, eLanded;
       goto Landed;
@@ -70,7 +72,7 @@ machine BatteryFailSafe
   }
 
   state Landed {
-    entry {
+    on eLanded do {
       // terminating state
       print "Landed!";
     }

@@ -1,0 +1,76 @@
+Total event coverage: 60.0%
+===========================
+StateMachine: PImplementation.BatteryFailSafe
+=============================================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.BatteryFailSafe+ConstructorEvent
+		Events sent: PImplementation.BatteryFailSafe+ConstructorEvent
+		Next states: Init_3
+
+	State: Init_3
+		State has no expected events, so coverage is 100%
+		Events sent: PImplementation.eStartBatteryFailSafe
+		Previous states: __InitState__
+		Next states: Monitoring
+
+	State: Monitoring
+		State event coverage: 100.0%
+		Events received: PImplementation.eStartBatteryFailSafe, PImplementation.eUpdateBatteryPercentage
+		Events sent: PImplementation.eLanding, PImplementation.eUpdateBatteryPercentage
+		Previous states: Init_3, Monitoring
+		Next states: Landing_1, Monitoring
+
+	State: Landing_1
+		State event coverage: 100.0%
+		Events received: PImplementation.eLanding
+		Events sent: PImplementation.eLanded
+		Previous states: Monitoring
+		Next states: Landed_1
+
+	State: Landed_1
+		State event coverage: 100.0%
+		Events received: PImplementation.eLanded
+		Previous states: Landing_1
+
+Monitor: PImplementation.BatteryFailSafeSpec
+============================================
+Event coverage: 0.0%
+
+	State: Init_7 is uncovered
+		Events received: eStartBatteryFailSafe
+		Events not covered: PImplementation.eStartBatteryFailSafe
+		Previous states: Init_7
+		Next states: InAir[hot], Init_7
+
+	State: InAir is uncovered
+		Events received: eLanded, eLanding, eUpdateBatteryPercentage
+		Events not covered: PImplementation.eLanded, PImplementation.eLanding, PImplementation.eUpdateBatteryPercentage
+		Next states: InAir[hot], Landed_2[cold]
+
+	State: Landed_2
+		State has no expected events, so coverage is 100%
+
+StateMachine: PImplementation.Test_BatteryFailSafe
+==================================================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.Test_BatteryFailSafe+ConstructorEvent
+		Events sent: PImplementation.Test_BatteryFailSafe+ConstructorEvent
+		Next states: Init_8
+
+	State: Init_8
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
+
+StateMachine: Plang.CSharpRuntime._GodMachine
+=============================================
+Event coverage: 100.0%
+
+	State: Init
+		State has no expected events, so coverage is 100%
+
