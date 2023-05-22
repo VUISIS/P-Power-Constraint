@@ -33,6 +33,7 @@ machine GeoFence
 
   start state Init {
     entry {
+      // define the fence boundary
       fence_alt_min = 0;
       fence_alt_max = 100;
       fence_radius = 100;
@@ -56,7 +57,10 @@ machine GeoFence
     }
       
     on eDroneMovementResponse do (response : tDroneMovementResponse) {
-      
+      // **********************************************************
+      // *** COMMENT THE CHECKS BELOW TO SEE THE COUNTEREXAMPLE ***
+      // **********************************************************
+
       // check if the drone is within the fence
       // exceeded fence radius
       if (drone_horizontal_distance_to_origin + response.horizontal_movement > fence_radius) {
@@ -65,6 +69,11 @@ machine GeoFence
         goto Holding;
       } 
       
+      // note that the drone's distance to horizon cannot be negative
+      else if (drone_horizontal_distance_to_origin + response.horizontal_movement < 0) {
+        // do nothing 
+      } 
+
       // exceeded fence altitude
       else if (drone_altitude + response.vertical_movement < fence_alt_min || drone_altitude + response.vertical_movement > fence_alt_max) {
         // drone is within the fence, check if the altitude is within the fence
@@ -74,9 +83,11 @@ machine GeoFence
       
       // update the drone's location normally
       else {
-        // update the drone's position
+        // update the drone's position and request new subsequent movement
         drone_altitude = drone_altitude + response.vertical_movement;
         drone_horizontal_distance_to_origin = drone_horizontal_distance_to_origin + response.horizontal_movement;
+        send this, eRequestDroneMovement;
+        goto GenerateMovement;
       }
     }
   }
@@ -99,6 +110,8 @@ machine GeoFence
       // generate random movement from -10 ~ 10
       response.horizontal_movement = choose(20) - 10;
       response.vertical_movement = choose(20) - 10;
+
+      print format ("Movement Generated, horizontal movement = {0}, vertical movement = {1}", response.horizontal_movement, response.vertical_movement);
 
       send this, eDroneMovementResponse, response;
       goto Monitoring;

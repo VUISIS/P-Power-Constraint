@@ -1,10 +1,17 @@
+// original battery fail safe model
 test battery [main=Test_BatteryFailSafe]:
   assert BatteryFailSafeSpec in
     (union BatteryFailSafe, { Test_BatteryFailSafe });
 
+// original geo-fence model
 test geofence [main=Test_GeoFence]:
   assert GeoFenceSpec in
   (union GeoFence, { Test_GeoFence });
+
+// test the updated models
+test powermanager [main=Test_PowerManagement]:
+  assert PowerManagementSpec in
+  (union PowerManagement, BatteryFailSafeModified, GeoFenceModified, { Test_PowerManagement });
 
 // test waypoint [main=Test_Waypoint]:
 //   assert WaypointCorrect in

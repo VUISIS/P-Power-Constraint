@@ -1,53 +1,41 @@
 ﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
   <Nodes>
-    <Node Id='PImplementation.BatteryFailSafe' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.BatteryFailSafe.Init_3' Label='Init_3'/>
-    <Node Id='PImplementation.BatteryFailSafe.Landed_1' Label='Landed_1'/>
-    <Node Id='PImplementation.BatteryFailSafe.Landing_1' Label='Landing_1'/>
-    <Node Id='PImplementation.BatteryFailSafe.Monitoring' Label='Monitoring'/>
-    <Node Id='PImplementation.BatteryFailSafe.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.BatteryFailSafeSpec' Label='PImplementation.BatteryFailSafeSpec' Category='Monitor' Group='Expanded'/>
-    <Node Id='PImplementation.BatteryFailSafeSpec.InAir' Label='InAir'/>
-    <Node Id='PImplementation.BatteryFailSafeSpec.InAir[hot]' Label='InAir[hot]'/>
-    <Node Id='PImplementation.BatteryFailSafeSpec.Init_7' Label='Init_7'/>
-    <Node Id='PImplementation.BatteryFailSafeSpec.Landed_2[cold]' Label='Landed_2[cold]'/>
-    <Node Id='PImplementation.Test_BatteryFailSafe' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.Test_BatteryFailSafe.Init_8' Label='Init_8'/>
-    <Node Id='PImplementation.Test_BatteryFailSafe.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFence.GenerateMovement' Label='GenerateMovement'/>
+    <Node Id='PImplementation.GeoFence.Init_2' Label='Init_2'/>
+    <Node Id='PImplementation.GeoFence.Monitoring_1' Label='Monitoring_1'/>
+    <Node Id='PImplementation.GeoFence.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFenceSpec' Label='PImplementation.GeoFenceSpec' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='GeoFenceEnabled'/>
+    <Node Id='PImplementation.GeoFenceSpec.Init_5' Label='Init_5'/>
+    <Node Id='PImplementation.Test_GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.Test_GeoFence.Init_8' Label='Init_8'/>
+    <Node Id='PImplementation.Test_GeoFence.__InitState__' Label='__InitState__'/>
     <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
     <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
   </Nodes>
   <Links>
-    <Link Source='PImplementation.BatteryFailSafe' Target='PImplementation.BatteryFailSafe.Init_3' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafe' Target='PImplementation.BatteryFailSafe.Landed_1' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafe' Target='PImplementation.BatteryFailSafe.Landing_1' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafe' Target='PImplementation.BatteryFailSafe.Monitoring' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafe' Target='PImplementation.BatteryFailSafe.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafe.Init_3' Target='PImplementation.BatteryFailSafe.Monitoring' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafe.Init_3' Target='PImplementation.BatteryFailSafe.Monitoring' Label='eStartBatteryFailSafe' Index='1' EventId='PImplementation.eStartBatteryFailSafe' HandledBy='Monitoring'/>
-    <Link Source='PImplementation.BatteryFailSafe.Init_3' Target='PImplementation.BatteryFailSafeSpec.Init_7' Label='eStartBatteryFailSafe' Index='0' EventId='eStartBatteryFailSafe'/>
-    <Link Source='PImplementation.BatteryFailSafe.Landing_1' Target='PImplementation.BatteryFailSafe.Landed_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafe.Landing_1' Target='PImplementation.BatteryFailSafe.Landed_1' Label='eLanded' Index='1' EventId='PImplementation.eLanded' HandledBy='Landed_1'/>
-    <Link Source='PImplementation.BatteryFailSafe.Landing_1' Target='PImplementation.BatteryFailSafeSpec.InAir' Label='eLanded' Index='0' EventId='eLanded'/>
-    <Link Source='PImplementation.BatteryFailSafe.Monitoring' Target='PImplementation.BatteryFailSafe.Landing_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafe.Monitoring' Target='PImplementation.BatteryFailSafe.Landing_1' Label='eLanding' Index='1' EventId='PImplementation.eLanding' HandledBy='Landing_1'/>
-    <Link Source='PImplementation.BatteryFailSafe.Monitoring' Target='PImplementation.BatteryFailSafe.Monitoring' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafe.Monitoring' Target='PImplementation.BatteryFailSafeSpec.InAir' Label='eUpdateBatteryPercentage' Index='0' EventId='eUpdateBatteryPercentage'/>
-    <Link Source='PImplementation.BatteryFailSafe.Monitoring' Target='PImplementation.BatteryFailSafeSpec.InAir' Label='eLanding' Index='1' EventId='eLanding'/>
-    <Link Source='PImplementation.BatteryFailSafe.__InitState__' Target='PImplementation.BatteryFailSafe.Init_3' Label='ConstructorEvent' Index='0' EventId='PImplementation.BatteryFailSafe+ConstructorEvent'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec' Target='PImplementation.BatteryFailSafeSpec.InAir' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec' Target='PImplementation.BatteryFailSafeSpec.InAir[hot]' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec' Target='PImplementation.BatteryFailSafeSpec.Init_7' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec' Target='PImplementation.BatteryFailSafeSpec.Landed_2[cold]' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.InAir' Target='PImplementation.BatteryFailSafeSpec.InAir[hot]' Label='eUpdateBatteryPercentage' Index='0' EventId='eUpdateBatteryPercentage'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.InAir' Target='PImplementation.BatteryFailSafeSpec.InAir[hot]' Label='goto' Category='goto' Index='1' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.InAir' Target='PImplementation.BatteryFailSafeSpec.InAir[hot]' Label='eLanding' Index='2' EventId='eLanding'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.InAir' Target='PImplementation.BatteryFailSafeSpec.Landed_2[cold]' Label='eLanded' Index='0' EventId='eLanded'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.Init_7' Target='PImplementation.BatteryFailSafeSpec.InAir[hot]' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafeSpec.Init_7' Target='PImplementation.BatteryFailSafeSpec.Init_7' Label='eStartBatteryFailSafe' Index='0' EventId='eStartBatteryFailSafe'/>
-    <Link Source='PImplementation.Test_BatteryFailSafe' Target='PImplementation.Test_BatteryFailSafe.Init_8' Category='Contains'/>
-    <Link Source='PImplementation.Test_BatteryFailSafe' Target='PImplementation.Test_BatteryFailSafe.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.Test_BatteryFailSafe.__InitState__' Target='PImplementation.Test_BatteryFailSafe.Init_8' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_BatteryFailSafe+ConstructorEvent'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.GenerateMovement' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Init_2' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Monitoring_1' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='eDroneMovementResponse' Index='0' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='eStartGeoFence' Index='1' EventId='PImplementation.eStartGeoFence' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFenceSpec.Init_5' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='eRequestDroneMovement' Index='1' EventId='PImplementation.eRequestDroneMovement' HandledBy='GenerateMovement'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFence.__InitState__' Target='PImplementation.GeoFence.Init_2' Label='ConstructorEvent' Index='0' EventId='PImplementation.GeoFence+ConstructorEvent'/>
+    <Link Source='PImplementation.GeoFenceSpec' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceSpec' Target='PImplementation.GeoFenceSpec.Init_5' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceSpec.GeoFenceEnabled' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFenceSpec.GeoFenceEnabled' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='eDroneMovementResponse' Index='1' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFenceSpec.Init_5' Target='PImplementation.GeoFenceSpec.GeoFenceEnabled' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFenceSpec.Init_5' Target='PImplementation.GeoFenceSpec.Init_5' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.Init_8' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence.__InitState__' Target='PImplementation.Test_GeoFence.Init_8' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_GeoFence+ConstructorEvent'/>
     <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
   </Links>
   <Styles>

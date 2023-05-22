@@ -23,9 +23,9 @@
 <StateLog> GeoFence(3) exits state 'Monitoring_1'.
 <StateLog> GeoFence(3) enters state 'GenerateMovement'.
 <DequeueLog> 'GeoFence(3)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement'.
-<PrintLog> Movement Generated, horizontal movement = 7, vertical movement = -8
+<PrintLog> Movement Generated, horizontal movement = -4, vertical movement = 1
 <MonitorLog> GeoFenceSpec is processing event 'eDroneMovementResponse' in state 'GeoFenceEnabled'.
-<ErrorLog> Assertion Failed: [spec machine] drone exceeded fence altitude, fence altitude min = 0, fence altitude max = 100, current altitude = -8
+<ErrorLog> Assertion Failed: [spec machine] drone exceeded fence altitude, fence altitude min = 0, fence altitude max = 100
 <StrategyLog> Found bug using 'random' strategy.
 <StrategyLog> Checking statistics:
 <StrategyLog> Found 1 bug.

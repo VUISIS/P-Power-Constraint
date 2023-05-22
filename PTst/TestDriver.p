@@ -24,7 +24,7 @@ machine Test_GeoFence {
   }
 }
 
-machine Test_PowerManagment {
+machine Test_PowerManagement {
   var powerManager: PowerManagement;  
   start state Init {
     entry {

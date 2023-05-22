@@ -1,66 +1,66 @@
-Total event coverage: 60.0%
+Total event coverage: 58.3%
 ===========================
-StateMachine: PImplementation.BatteryFailSafe
-=============================================
+StateMachine: PImplementation.GeoFence
+======================================
 Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: PImplementation.BatteryFailSafe+ConstructorEvent
-		Events sent: PImplementation.BatteryFailSafe+ConstructorEvent
-		Next states: Init_3
+		Events received: PImplementation.GeoFence+ConstructorEvent
+		Events sent: PImplementation.GeoFence+ConstructorEvent
+		Next states: Init_2
 
-	State: Init_3
+	State: Init_2
 		State has no expected events, so coverage is 100%
-		Events sent: PImplementation.eStartBatteryFailSafe
+		Events sent: PImplementation.eStartGeoFence
 		Previous states: __InitState__
-		Next states: Monitoring
+		Next states: Monitoring_1
 
-	State: Monitoring
+	State: Monitoring_1
 		State event coverage: 100.0%
-		Events received: PImplementation.eStartBatteryFailSafe, PImplementation.eUpdateBatteryPercentage
-		Events sent: PImplementation.eLanding, PImplementation.eUpdateBatteryPercentage
-		Previous states: Init_3, Monitoring
-		Next states: Landing_1, Monitoring
+		Events received: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eStartGeoFence
+		Events sent: PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
+		Previous states: GenerateMovement, Holding, Init_2
+		Next states: GenerateMovement, Holding
 
-	State: Landing_1
+	State: Holding
 		State event coverage: 100.0%
-		Events received: PImplementation.eLanding
-		Events sent: PImplementation.eLanded
-		Previous states: Monitoring
-		Next states: Landed_1
+		Events received: PImplementation.eFenceReached
+		Events sent: PImplementation.eFenceDistanced
+		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
-	State: Landed_1
+	State: GenerateMovement
 		State event coverage: 100.0%
-		Events received: PImplementation.eLanded
-		Previous states: Landing_1
+		Events received: PImplementation.eRequestDroneMovement
+		Events sent: PImplementation.eDroneMovementResponse
+		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
-Monitor: PImplementation.BatteryFailSafeSpec
-============================================
+Monitor: PImplementation.GeoFenceSpec
+=====================================
 Event coverage: 0.0%
 
-	State: Init_7 is uncovered
-		Events received: eStartBatteryFailSafe
-		Events not covered: PImplementation.eStartBatteryFailSafe
-		Previous states: Init_7
-		Next states: InAir[hot], Init_7
+	State: Init_5 is uncovered
+		Events received: eStartGeoFence
+		Events not covered: PImplementation.eStartGeoFence
+		Previous states: Init_5
+		Next states: GeoFenceEnabled, Init_5
 
-	State: InAir is uncovered
-		Events received: eLanded, eLanding, eUpdateBatteryPercentage
-		Events not covered: PImplementation.eLanded, PImplementation.eLanding, PImplementation.eUpdateBatteryPercentage
-		Next states: InAir[hot], Landed_2[cold]
+	State: GeoFenceEnabled is uncovered
+		Events received: eDroneMovementResponse, eFenceDistanced, eFenceReached, eRequestDroneMovement
+		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
+		Previous states: GeoFenceEnabled, Init_5
+		Next states: GeoFenceEnabled
 
-	State: Landed_2
-		State has no expected events, so coverage is 100%
-
-StateMachine: PImplementation.Test_BatteryFailSafe
-==================================================
+StateMachine: PImplementation.Test_GeoFence
+===========================================
 Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: PImplementation.Test_BatteryFailSafe+ConstructorEvent
-		Events sent: PImplementation.Test_BatteryFailSafe+ConstructorEvent
+		Events received: PImplementation.Test_GeoFence+ConstructorEvent
+		Events sent: PImplementation.Test_GeoFence+ConstructorEvent
 		Next states: Init_8
 
 	State: Init_8

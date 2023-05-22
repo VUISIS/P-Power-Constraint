@@ -1,25 +1,32 @@
 ﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
   <Nodes>
-    <Node Id='PImplementation.GeoFence' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.GeoFence.Init_2' Label='Init_2'/>
-    <Node Id='PImplementation.GeoFence.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.GeoFenceSpec' Label='PImplementation.GeoFenceSpec' Category='Monitor' Group='Expanded'/>
-    <Node Id='PImplementation.GeoFenceSpec.Init_5' Label='Init_5'/>
-    <Node Id='PImplementation.Test_GeoFence' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.Test_GeoFence.Init_8' Label='Init_8'/>
-    <Node Id='PImplementation.Test_GeoFence.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.BatteryFailSafeModified' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.BatteryFailSafeModified.Init' Label='Init'/>
+    <Node Id='PImplementation.BatteryFailSafeModified.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFenceModified' Category='StateMachine'/>
+    <Node Id='PImplementation.PowerManagement' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.PowerManagement.Init_3' Label='Init_3'/>
+    <Node Id='PImplementation.PowerManagement.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.PowerManagementSpec' Label='PImplementation.PowerManagementSpec' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.PowerManagementSpec.Init_5' Label='Init_5'/>
+    <Node Id='PImplementation.Test_PowerManagement' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.Test_PowerManagement.Init_10' Label='Init_10'/>
+    <Node Id='PImplementation.Test_PowerManagement.__InitState__' Label='__InitState__'/>
     <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
     <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
   </Nodes>
   <Links>
-    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Init_2' Category='Contains'/>
-    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFenceSpec.Init_5' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
-    <Link Source='PImplementation.GeoFence.__InitState__' Target='PImplementation.GeoFence.Init_2' Label='ConstructorEvent' Index='0' EventId='PImplementation.GeoFence+ConstructorEvent'/>
-    <Link Source='PImplementation.GeoFenceSpec' Target='PImplementation.GeoFenceSpec.Init_5' Category='Contains'/>
-    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.Init_8' Category='Contains'/>
-    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.Test_GeoFence.__InitState__' Target='PImplementation.Test_GeoFence.Init_8' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_GeoFence+ConstructorEvent'/>
+    <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.Init' Category='Contains'/>
+    <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagementSpec.Init_5' Label='eUpdateDroneBatteryRequest' Index='0' EventId='eUpdateDroneBatteryRequest'/>
+    <Link Source='PImplementation.BatteryFailSafeModified.__InitState__' Target='PImplementation.BatteryFailSafeModified.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.BatteryFailSafeModified+ConstructorEvent'/>
+    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.Init_3' Category='Contains'/>
+    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.PowerManagement.__InitState__' Target='PImplementation.PowerManagement.Init_3' Label='ConstructorEvent' Index='0' EventId='PImplementation.PowerManagement+ConstructorEvent'/>
+    <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.Init_5' Category='Contains'/>
+    <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.Init_10' Category='Contains'/>
+    <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.Test_PowerManagement.__InitState__' Target='PImplementation.Test_PowerManagement.Init_10' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_PowerManagement+ConstructorEvent'/>
     <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
   </Links>
   <Styles>

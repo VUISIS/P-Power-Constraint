@@ -1,19 +1,22 @@
-<TestLog> Running test 'geofence'.
-<CreateLog> GeoFenceSpec was created.
-<MonitorLog> GeoFenceSpec enters state 'Init_5'.
+<TestLog> Running test 'powermanager'.
+<CreateLog> PowerManagementSpec was created.
+<MonitorLog> PowerManagementSpec enters state 'Init_5'.
 <CreateLog> Plang.CSharpRuntime._GodMachine(1) was created by task '2'.
-<CreateLog> PImplementation.Test_GeoFence(2) was created by Plang.CSharpRuntime._GodMachine(1).
-<StateLog> PImplementation.Test_GeoFence(2) enters state 'Init_8'.
-<CreateLog> GeoFence(3) was created by PImplementation.Test_GeoFence(2).
-<StateLog> GeoFence(3) enters state 'Init_2'.
-<PrintLog> Geo Fence Enabled!
-<MonitorLog> GeoFenceSpec is processing event 'eStartGeoFence' in state 'Init_5'.
-<MonitorLog> GeoFenceSpec exits state 'Init_5'.
-<ErrorLog> PImplementation.GeoFenceSpec received event 'PImplementation.eStartGeoFence' that cannot be handled.
+<CreateLog> PImplementation.Test_PowerManagement(2) was created by Plang.CSharpRuntime._GodMachine(1).
+<StateLog> PImplementation.Test_PowerManagement(2) enters state 'Init_10'.
+<CreateLog> PowerManagement(3) was created by PImplementation.Test_PowerManagement(2).
+<CreateLog> BatteryFailSafeModified(4) was created by PImplementation.Test_PowerManagement(2).
+<CreateLog> GeoFenceModified(5) was created by PImplementation.Test_PowerManagement(2).
+<StateLog> PowerManagement(3) enters state 'Init_3'.
+<StateLog> BatteryFailSafeModified(4) enters state 'Init'.
+<PrintLog> Battery Fail Safe Enabled!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'Init_5'.
+<MonitorLog> PowerManagementSpec exits state 'Init_5'.
+<ErrorLog> PImplementation.PowerManagementSpec received event 'PImplementation.eUpdateDroneBatteryRequest' that cannot be handled.
 <StrategyLog> Found bug using 'random' strategy.
 <StrategyLog> Checking statistics:
 <StrategyLog> Found 1 bug.
 <StrategyLog> Scheduling statistics:
 <StrategyLog> Explored 1 schedule: 1 fair and 0 unfair.
 <StrategyLog> Found 100.00% buggy schedules.
-<StrategyLog> Number of scheduling points in fair terminating schedules: 6 (min), 6 (avg), 6 (max).
+<StrategyLog> Number of scheduling points in fair terminating schedules: 9 (min), 9 (avg), 9 (max).
