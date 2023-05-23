@@ -1,8 +1,8 @@
-Total event coverage: 33.3%
+Total event coverage: 41.7%
 ===========================
 StateMachine: PImplementation.GeoFence
 ======================================
-Event coverage: 50.0%
+Event coverage: 66.7%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -17,11 +17,11 @@ Event coverage: 50.0%
 		Next states: Monitoring_1
 
 	State: Monitoring_1
-		State event coverage: 33.3%
-		Events received: PImplementation.eStartGeoFence
+		State event coverage: 66.7%
+		Events received: PImplementation.eDroneMovementResponse, PImplementation.eStartGeoFence
 		Events sent: PImplementation.eRequestDroneMovement
-		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced
-		Previous states: Init_2
+		Events not covered: PImplementation.eFenceDistanced
+		Previous states: GenerateMovement, Init_2
 		Next states: GenerateMovement
 
 	State: Holding is uncovered
@@ -30,7 +30,9 @@ Event coverage: 50.0%
 	State: GenerateMovement
 		State event coverage: 100.0%
 		Events received: PImplementation.eRequestDroneMovement
+		Events sent: PImplementation.eDroneMovementResponse
 		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
 Monitor: PImplementation.GeoFenceSpec
 =====================================

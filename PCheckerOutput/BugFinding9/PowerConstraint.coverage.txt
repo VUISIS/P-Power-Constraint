@@ -1,8 +1,8 @@
-Total event coverage: 33.3%
+Total event coverage: 58.3%
 ===========================
 StateMachine: PImplementation.GeoFence
 ======================================
-Event coverage: 50.0%
+Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -17,20 +17,25 @@ Event coverage: 50.0%
 		Next states: Monitoring_1
 
 	State: Monitoring_1
-		State event coverage: 33.3%
-		Events received: PImplementation.eStartGeoFence
-		Events sent: PImplementation.eRequestDroneMovement
-		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced
-		Previous states: Init_2
-		Next states: GenerateMovement
+		State event coverage: 100.0%
+		Events received: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eStartGeoFence
+		Events sent: PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
+		Previous states: GenerateMovement, Holding, Init_2
+		Next states: GenerateMovement, Holding
 
-	State: Holding is uncovered
-		Events not covered: PImplementation.eFenceReached
+	State: Holding
+		State event coverage: 100.0%
+		Events received: PImplementation.eFenceReached
+		Events sent: PImplementation.eFenceDistanced
+		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
 	State: GenerateMovement
 		State event coverage: 100.0%
 		Events received: PImplementation.eRequestDroneMovement
+		Events sent: PImplementation.eDroneMovementResponse
 		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
 Monitor: PImplementation.GeoFenceSpec
 =====================================
@@ -43,7 +48,7 @@ Event coverage: 0.0%
 		Next states: GeoFenceEnabled, Init_5
 
 	State: GeoFenceEnabled is uncovered
-		Events received: eDroneMovementResponse, eRequestDroneMovement
+		Events received: eDroneMovementResponse, eFenceDistanced, eFenceReached, eRequestDroneMovement
 		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
 		Previous states: GeoFenceEnabled, Init_5
 		Next states: GeoFenceEnabled

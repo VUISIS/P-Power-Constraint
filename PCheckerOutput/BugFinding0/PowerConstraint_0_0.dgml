@@ -3,7 +3,10 @@
     <Node Id='PImplementation.BatteryFailSafeModified' Category='StateMachine' Group='Expanded'/>
     <Node Id='PImplementation.BatteryFailSafeModified.Init' Label='Init'/>
     <Node Id='PImplementation.BatteryFailSafeModified.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.PowerManagement' Category='StateMachine'/>
+    <Node Id='PImplementation.GeoFenceModified' Category='StateMachine'/>
+    <Node Id='PImplementation.PowerManagement' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.PowerManagement.Init_3' Label='Init_3'/>
+    <Node Id='PImplementation.PowerManagement.__InitState__' Label='__InitState__'/>
     <Node Id='PImplementation.PowerManagementSpec' Label='PImplementation.PowerManagementSpec' Category='Monitor' Group='Expanded'/>
     <Node Id='PImplementation.PowerManagementSpec.Init_5' Label='Init_5'/>
     <Node Id='PImplementation.Test_PowerManagement' Category='StateMachine' Group='Expanded'/>
@@ -17,6 +20,9 @@
     <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagementSpec.Init_5' Label='eUpdateDroneBatteryRequest' Index='0' EventId='eUpdateDroneBatteryRequest'/>
     <Link Source='PImplementation.BatteryFailSafeModified.__InitState__' Target='PImplementation.BatteryFailSafeModified.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.BatteryFailSafeModified+ConstructorEvent'/>
+    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.Init_3' Category='Contains'/>
+    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.PowerManagement.__InitState__' Target='PImplementation.PowerManagement.Init_3' Label='ConstructorEvent' Index='0' EventId='PImplementation.PowerManagement+ConstructorEvent'/>
     <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.Init_5' Category='Contains'/>
     <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.Init_10' Category='Contains'/>
     <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.__InitState__' Category='Contains'/>

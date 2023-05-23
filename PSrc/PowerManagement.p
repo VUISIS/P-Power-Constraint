@@ -37,6 +37,8 @@ machine PowerManagement {
   // state machines
   var batteryFailSafeMachine: BatteryFailSafeModified;
   var genFenceMachine: GeoFenceModified;
+
+  // static parameters
   var powerConsumptionRate: float; // percentage per meter
 
   // cached parameters, these parameter might be delayed
@@ -50,6 +52,8 @@ machine PowerManagement {
       powerConsumptionRate = 1.0; // percentage per meter
       droneHorizontalPosition = 0.0;
       droneVerticalPosition = 0.0;
+
+      goto WaitingForRequests;
     }
   }
 
