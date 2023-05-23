@@ -66,11 +66,9 @@ machine BatteryFailSafeModified
         goto Landing;
       }
 
-      // otherwise, continue monitoring
+      // otherwise, continue monitoring, do nothing
       else {
         print "battery above threshold, continue monitoring!";
-        send this, eUpdateBatteryPercentage;
-        goto MonitorAndUpdate;
       }
 
       // note that the drone battery percentage must be updated

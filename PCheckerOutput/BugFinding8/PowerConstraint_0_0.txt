@@ -1,0 +1,65 @@
+<TestLog> Running test 'powermanager'.
+<CreateLog> PowerManagementSpec was created.
+<MonitorLog> PowerManagementSpec enters state 'Init_5'.
+<MonitorLog> Monitor 'PowerManagementSpec' raised event 'GotoStateEvent' in state 'Init_5'.
+<MonitorLog> PowerManagementSpec exits state 'Init_5'.
+<MonitorLog> PowerManagementSpec enters state 'WaitingForRequests_1'.
+<CreateLog> Plang.CSharpRuntime._GodMachine(1) was created by task '2'.
+<CreateLog> PImplementation.Test_PowerManagement(2) was created by Plang.CSharpRuntime._GodMachine(1).
+<StateLog> PImplementation.Test_PowerManagement(2) enters state 'Init_11'.
+<CreateLog> PowerManagement(3) was created by PImplementation.Test_PowerManagement(2).
+<CreateLog> BatteryFailSafeModified(4) was created by PImplementation.Test_PowerManagement(2).
+<StateLog> PowerManagement(3) enters state 'Init_3'.
+<GotoLog> PowerManagement(3) is transitioning from state 'Init_3' to state 'WaitingForRequests'.
+<StateLog> PowerManagement(3) exits state 'Init_3'.
+<StateLog> PowerManagement(3) enters state 'WaitingForRequests'.
+<StateLog> BatteryFailSafeModified(4) enters state 'Init'.
+<PrintLog> Battery Fail Safe Enabled!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'Init' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'Init' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<GotoLog> BatteryFailSafeModified(4) is transitioning from state 'Init' to state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) exits state 'Init'.
+<StateLog> BatteryFailSafeModified(4) enters state 'MonitorAndUpdate'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<CreateLog> GeoFenceModified(5) was created by PImplementation.Test_PowerManagement(2).
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 0
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<StateLog> GeoFenceModified(5) enters state 'Init_4'.
+<PrintLog> GeoFence Enabled!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'Init_4' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:0, droneHorizontalPosition:0, droneVerticalPosition:0, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'Init_4' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'Init_4' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'Init_4'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateBatteryPercentage' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateBatteryPercentage' to 'BatteryFailSafeModified(4)'.
+<GotoLog> BatteryFailSafeModified(4) is transitioning from state 'MonitorAndUpdate' to state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) exits state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) enters state 'MonitorAndUpdate'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eUpdateBatteryPercentage' in state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) exits state 'MonitorAndUpdate'.
+<PopLog> 'BatteryFailSafeModified(4)' popped with unhandled event 'eUpdateBatteryPercentage' and reentered state 'MonitorAndUpdate.
+<ExceptionLog> BatteryFailSafeModified(4) running action '' in state 'MonitorAndUpdate' threw exception 'UnhandledEventException'.
+<ErrorLog> BatteryFailSafeModified(4) received event 'PImplementation.eUpdateBatteryPercentage' that cannot be handled.
+<StrategyLog> Found bug using 'random' strategy.
+<StrategyLog> Checking statistics:
+<StrategyLog> Found 1 bug.
+<StrategyLog> Scheduling statistics:
+<StrategyLog> Explored 1 schedule: 1 fair and 0 unfair.
+<StrategyLog> Found 100.00% buggy schedules.
+<StrategyLog> Number of scheduling points in fair terminating schedules: 24 (min), 24 (avg), 24 (max).

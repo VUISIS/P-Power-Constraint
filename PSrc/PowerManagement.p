@@ -103,6 +103,8 @@ machine PowerManagement {
       droneVerticalPosition = request.droneVerticalPosition;
       cumulativeDroneMovementDistance = cumulativeDroneMovementDistance + request.droneMovementDistance;
     }
+
+    
   }
 
 

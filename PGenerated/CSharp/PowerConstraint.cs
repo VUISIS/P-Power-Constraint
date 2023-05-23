@@ -282,14 +282,12 @@ namespace PImplementation
             PrtString TMP_tmp9 = ((PrtString)"");
             PMachineValue TMP_tmp10 = null;
             PEvent TMP_tmp11 = null;
-            PMachineValue TMP_tmp12 = null;
-            PEvent TMP_tmp13 = null;
-            PrtFloat TMP_tmp14 = ((PrtFloat)0.0);
-            PrtNamedTuple TMP_tmp15 = (new PrtNamedTuple(new string[]{"batteryPercentage"},((PrtFloat)0.0)));
+            PrtFloat TMP_tmp12 = ((PrtFloat)0.0);
+            PrtNamedTuple TMP_tmp13 = (new PrtNamedTuple(new string[]{"batteryPercentage"},((PrtFloat)0.0)));
+            PMachineValue TMP_tmp14 = null;
+            PEvent TMP_tmp15 = null;
             PMachineValue TMP_tmp16 = null;
-            PEvent TMP_tmp17 = null;
-            PMachineValue TMP_tmp18 = null;
-            PrtNamedTuple TMP_tmp19 = (new PrtNamedTuple(new string[]{"source"},null));
+            PrtNamedTuple TMP_tmp17 = (new PrtNamedTuple(new string[]{"source"},null));
             TMP_tmp0_1 = (PrtFloat)(((PrtNamedTuple)response)["droneMovementDistance"]);
             TMP_tmp1_1 = (PrtFloat)((TMP_tmp0_1) * (powerConsumptionRate));
             TMP_tmp2_1 = (PrtFloat)((battery_percentage) - (TMP_tmp1_1));
@@ -312,22 +310,17 @@ namespace PImplementation
             {
                 TMP_tmp9 = (PrtString)(((PrtString) String.Format("battery above threshold, continue monitoring!")));
                 PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp9);
-                TMP_tmp10 = (PMachineValue)(currentMachine.self);
-                TMP_tmp11 = (PEvent)(new eUpdateBatteryPercentage(null));
-                currentMachine.TrySendEvent(TMP_tmp10, (Event)TMP_tmp11);
-                currentMachine.TryGotoState<MonitorAndUpdate>();
-                return;
             }
-            TMP_tmp12 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager)?.Clone()));
-            TMP_tmp13 = (PEvent)(new eUpdateDroneBatteryRequest((new PrtNamedTuple(new string[]{"batteryPercentage"},((PrtFloat)0.0)))));
-            TMP_tmp14 = (PrtFloat)(((PrtFloat)((IPrtValue)battery_percentage)?.Clone()));
-            TMP_tmp15 = (PrtNamedTuple)((new PrtNamedTuple(new string[]{"batteryPercentage"}, TMP_tmp14)));
-            currentMachine.TrySendEvent(TMP_tmp12, (Event)TMP_tmp13, TMP_tmp15);
-            TMP_tmp16 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager)?.Clone()));
-            TMP_tmp17 = (PEvent)(new eBatteryThresholdRequest((new PrtNamedTuple(new string[]{"source"},null))));
-            TMP_tmp18 = (PMachineValue)(currentMachine.self);
-            TMP_tmp19 = (PrtNamedTuple)((new PrtNamedTuple(new string[]{"source"}, TMP_tmp18)));
-            currentMachine.TrySendEvent(TMP_tmp16, (Event)TMP_tmp17, TMP_tmp19);
+            TMP_tmp10 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager)?.Clone()));
+            TMP_tmp11 = (PEvent)(new eUpdateDroneBatteryRequest((new PrtNamedTuple(new string[]{"batteryPercentage"},((PrtFloat)0.0)))));
+            TMP_tmp12 = (PrtFloat)(((PrtFloat)((IPrtValue)battery_percentage)?.Clone()));
+            TMP_tmp13 = (PrtNamedTuple)((new PrtNamedTuple(new string[]{"batteryPercentage"}, TMP_tmp12)));
+            currentMachine.TrySendEvent(TMP_tmp10, (Event)TMP_tmp11, TMP_tmp13);
+            TMP_tmp14 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager)?.Clone()));
+            TMP_tmp15 = (PEvent)(new eBatteryThresholdRequest((new PrtNamedTuple(new string[]{"source"},null))));
+            TMP_tmp16 = (PMachineValue)(currentMachine.self);
+            TMP_tmp17 = (PrtNamedTuple)((new PrtNamedTuple(new string[]{"source"}, TMP_tmp16)));
+            currentMachine.TrySendEvent(TMP_tmp14, (Event)TMP_tmp15, TMP_tmp17);
         }
         public void Anon_2(Event currentMachine_dequeuedEvent)
         {
@@ -662,8 +655,8 @@ namespace PImplementation
             PMachineValue TMP_tmp15_1 = null;
             PEvent TMP_tmp16_1 = null;
             PrtInt TMP_tmp17_1 = ((PrtInt)0);
-            PrtInt TMP_tmp18_1 = ((PrtInt)0);
-            PrtInt TMP_tmp19_1 = ((PrtInt)0);
+            PrtInt TMP_tmp18 = ((PrtInt)0);
+            PrtInt TMP_tmp19 = ((PrtInt)0);
             PrtInt TMP_tmp20 = ((PrtInt)0);
             PMachineValue TMP_tmp21 = null;
             PEvent TMP_tmp22 = null;
@@ -713,10 +706,10 @@ namespace PImplementation
                     else
                     {
                         TMP_tmp17_1 = (PrtInt)(((PrtNamedTuple)response_2)["vertical_movement"]);
-                        TMP_tmp18_1 = (PrtInt)((drone_altitude) + (TMP_tmp17_1));
-                        drone_altitude = TMP_tmp18_1;
-                        TMP_tmp19_1 = (PrtInt)(((PrtNamedTuple)response_2)["horizontal_movement"]);
-                        TMP_tmp20 = (PrtInt)((drone_horizontal_distance_to_origin) + (TMP_tmp19_1));
+                        TMP_tmp18 = (PrtInt)((drone_altitude) + (TMP_tmp17_1));
+                        drone_altitude = TMP_tmp18;
+                        TMP_tmp19 = (PrtInt)(((PrtNamedTuple)response_2)["horizontal_movement"]);
+                        TMP_tmp20 = (PrtInt)((drone_horizontal_distance_to_origin) + (TMP_tmp19));
                         drone_horizontal_distance_to_origin = TMP_tmp20;
                         TMP_tmp21 = (PMachineValue)(currentMachine.self);
                         TMP_tmp22 = (PEvent)(new eRequestDroneMovement(null));
@@ -858,6 +851,8 @@ namespace PImplementation
             powerConsumptionRate_1 = (PrtFloat)(((PrtFloat)1));
             droneHorizontalPosition = (PrtFloat)(((PrtFloat)0));
             droneVerticalPosition = (PrtFloat)(((PrtFloat)0));
+            currentMachine.TryGotoState<WaitingForRequests>();
+            return;
         }
         public void Anon_15(Event currentMachine_dequeuedEvent)
         {
@@ -1119,8 +1114,8 @@ namespace PImplementation
             PrtFloat TMP_tmp15_2 = ((PrtFloat)0.0);
             PrtFloat TMP_tmp16_2 = ((PrtFloat)0.0);
             PrtFloat TMP_tmp17_2 = ((PrtFloat)0.0);
-            PMachineValue TMP_tmp18_2 = null;
-            PEvent TMP_tmp19_2 = null;
+            PMachineValue TMP_tmp18_1 = null;
+            PEvent TMP_tmp19_1 = null;
             PrtFloat TMP_tmp20_1 = ((PrtFloat)0.0);
             PrtFloat TMP_tmp21_1 = ((PrtFloat)0.0);
             PrtFloat TMP_tmp22_1 = ((PrtFloat)0.0);
@@ -1176,15 +1171,15 @@ namespace PImplementation
                     drone_horizontal_distance_to_origin_1 = TMP_tmp17_2;
                 }
             }
-            TMP_tmp18_2 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_1)?.Clone()));
-            TMP_tmp19_2 = (PEvent)(new eUpdateDroneMovementDistanceAndPosition((new PrtNamedTuple(new string[]{"droneMovementDistance","droneHorizontalPosition","droneVerticalPosition"},((PrtFloat)0.0), ((PrtFloat)0.0), ((PrtFloat)0.0)))));
+            TMP_tmp18_1 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_1)?.Clone()));
+            TMP_tmp19_1 = (PEvent)(new eUpdateDroneMovementDistanceAndPosition((new PrtNamedTuple(new string[]{"droneMovementDistance","droneHorizontalPosition","droneVerticalPosition"},((PrtFloat)0.0), ((PrtFloat)0.0), ((PrtFloat)0.0)))));
             TMP_tmp20_1 = (PrtFloat)(((PrtNamedTuple)response_5)["vertical_movement"]);
             TMP_tmp21_1 = (PrtFloat)(((PrtNamedTuple)response_5)["horizontal_movement"]);
             TMP_tmp22_1 = (PrtFloat)((TMP_tmp20_1) + (TMP_tmp21_1));
             TMP_tmp23 = (PrtFloat)(((PrtFloat)((IPrtValue)drone_horizontal_distance_to_origin_1)?.Clone()));
             TMP_tmp24 = (PrtFloat)(((PrtFloat)((IPrtValue)drone_altitude_1)?.Clone()));
             TMP_tmp25 = (PrtNamedTuple)((new PrtNamedTuple(new string[]{"droneMovementDistance","droneHorizontalPosition","droneVerticalPosition"}, TMP_tmp22_1, TMP_tmp23, TMP_tmp24)));
-            currentMachine.TrySendEvent(TMP_tmp18_2, (Event)TMP_tmp19_2, TMP_tmp25);
+            currentMachine.TrySendEvent(TMP_tmp18_1, (Event)TMP_tmp19_1, TMP_tmp25);
             TMP_tmp26 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_1)?.Clone()));
             TMP_tmp27 = (PEvent)(new eFenceRadiusRequest((new PrtNamedTuple(new string[]{"source"},null))));
             TMP_tmp28 = (PMachineValue)(currentMachine.self);
@@ -1262,6 +1257,12 @@ namespace PImplementation
 {
     internal partial class PowerManagementSpec : PMonitor
     {
+        private PrtFloat powerConsumptionRate_2 = ((PrtFloat)0.0);
+        private PrtFloat batteryPercentage_1 = ((PrtFloat)0.0);
+        private PrtFloat droneHorizontalPosition_1 = ((PrtFloat)0.0);
+        private PrtFloat droneVerticalPosition_1 = ((PrtFloat)0.0);
+        private PrtFloat batteryThreshold = ((PrtFloat)0.0);
+        private PrtFloat fenceRadius = ((PrtFloat)0.0);
         static PowerManagementSpec() {
             observes.Add(nameof(eBatteryThresholdRequest));
             observes.Add(nameof(eBatteryThresholdResponse));
@@ -1273,8 +1274,138 @@ namespace PImplementation
             observes.Add(nameof(eUpdateDroneMovementDistanceAndPosition));
         }
         
+        public void Anon_26(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            powerConsumptionRate_2 = (PrtFloat)(((PrtFloat)1));
+            droneHorizontalPosition_1 = (PrtFloat)(((PrtFloat)0));
+            droneVerticalPosition_1 = (PrtFloat)(((PrtFloat)0));
+            currentMachine.TryGotoState<WaitingForRequests_1>();
+            return;
+        }
+        public void Anon_27(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtBool TMP_tmp0_25 = ((PrtBool)false);
+            PrtFloat TMP_tmp1_23 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp2_20 = ((PrtFloat)0.0);
+            PrtString TMP_tmp3_15 = ((PrtString)"");
+            PrtFloat TMP_tmp4_14 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp5_12 = ((PrtFloat)0.0);
+            PrtBool TMP_tmp6_10 = ((PrtBool)false);
+            PrtFloat TMP_tmp7_10 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp8_8 = ((PrtFloat)0.0);
+            PrtString TMP_tmp9_6 = ((PrtString)"");
+            PrtBool TMP_tmp10_4 = ((PrtBool)false);
+            PrtFloat TMP_tmp11_3 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp12_3 = ((PrtFloat)0.0);
+            PrtString TMP_tmp13_3 = ((PrtString)"");
+            TMP_tmp0_25 = (PrtBool)((fenceRadius) >= (droneHorizontalPosition_1));
+            TMP_tmp1_23 = (PrtFloat)(((PrtFloat)((IPrtValue)fenceRadius)?.Clone()));
+            TMP_tmp2_20 = (PrtFloat)(((PrtFloat)((IPrtValue)droneHorizontalPosition_1)?.Clone()));
+            TMP_tmp3_15 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence radius, fence radius = {0}, horizonal distance to origin = {1}",TMP_tmp1_23,TMP_tmp2_20)));
+            currentMachine.TryAssert(TMP_tmp0_25,"Assertion Failed: " + TMP_tmp3_15);
+            TMP_tmp4_14 = (PrtFloat)((droneHorizontalPosition_1) + (droneVerticalPosition_1));
+            TMP_tmp5_12 = (PrtFloat)((powerConsumptionRate_2) * (TMP_tmp4_14));
+            TMP_tmp6_10 = (PrtBool)((TMP_tmp5_12) >= (batteryPercentage_1));
+            TMP_tmp7_10 = (PrtFloat)((batteryPercentage_1) / (powerConsumptionRate_2));
+            TMP_tmp8_8 = (PrtFloat)((droneHorizontalPosition_1) + (droneVerticalPosition_1));
+            TMP_tmp9_6 = (PrtString)(((PrtString) String.Format("[spec machine] remaining drone battery cannot make it back to the launch point, Available Range = {0}, Distance to Origin = {1}",TMP_tmp7_10,TMP_tmp8_8)));
+            currentMachine.TryAssert(TMP_tmp6_10,"Assertion Failed: " + TMP_tmp9_6);
+            TMP_tmp10_4 = (PrtBool)((batteryPercentage_1) >= (batteryThreshold));
+            TMP_tmp11_3 = (PrtFloat)(((PrtFloat)((IPrtValue)fenceRadius)?.Clone()));
+            TMP_tmp12_3 = (PrtFloat)(((PrtFloat)((IPrtValue)droneHorizontalPosition_1)?.Clone()));
+            TMP_tmp13_3 = (PrtString)(((PrtString) String.Format("[spec machine] battery level fall below designated threshold, current battery level = {0},  = {1}",TMP_tmp11_3,TMP_tmp12_3)));
+            currentMachine.TryAssert(TMP_tmp10_4,"Assertion Failed: " + TMP_tmp13_3);
+        }
+        public void Anon_28(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple request_5 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+        }
+        public void Anon_29(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple request_6 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+            PrtFloat TMP_tmp0_26 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp1_24 = ((PrtFloat)0.0);
+            TMP_tmp0_26 = (PrtFloat)(((PrtNamedTuple)request_6)["batteryPercentage"]);
+            TMP_tmp1_24 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp0_26)?.Clone()));
+            batteryPercentage_1 = TMP_tmp1_24;
+        }
+        public void Anon_30(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple request_7 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+        }
+        public void Anon_31(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple request_8 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+        }
+        public void Anon_32(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple request_9 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+            PrtFloat TMP_tmp0_27 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp1_25 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp2_21 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp3_16 = ((PrtFloat)0.0);
+            TMP_tmp0_27 = (PrtFloat)(((PrtNamedTuple)request_9)["droneHorizontalPosition"]);
+            TMP_tmp1_25 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp0_27)?.Clone()));
+            droneHorizontalPosition_1 = TMP_tmp1_25;
+            TMP_tmp2_21 = (PrtFloat)(((PrtNamedTuple)request_9)["droneVerticalPosition"]);
+            TMP_tmp3_16 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp2_21)?.Clone()));
+            droneVerticalPosition_1 = TMP_tmp3_16;
+        }
+        public void Anon_33(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple response_7 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+            PrtFloat TMP_tmp0_28 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp1_26 = ((PrtFloat)0.0);
+            TMP_tmp0_28 = (PrtFloat)(((PrtNamedTuple)response_7)["batteryThreshold"]);
+            TMP_tmp1_26 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp0_28)?.Clone()));
+            batteryThreshold = TMP_tmp1_26;
+        }
+        public void Anon_34(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple response_8 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+        }
+        public void Anon_35(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+            PrtNamedTuple response_9 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+            PrtFloat TMP_tmp0_29 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp1_27 = ((PrtFloat)0.0);
+            TMP_tmp0_29 = (PrtFloat)(((PrtNamedTuple)response_9)["fenceRadius"]);
+            TMP_tmp1_27 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp0_29)?.Clone()));
+            fenceRadius = TMP_tmp1_27;
+        }
         [Start]
+        [OnEntry(nameof(Anon_26))]
         class Init_5 : State
+        {
+        }
+        [OnEntry(nameof(Anon_27))]
+        [OnEventDoAction(typeof(eBatteryThresholdRequest), nameof(Anon_28))]
+        [OnEventDoAction(typeof(eUpdateDroneBatteryRequest), nameof(Anon_29))]
+        [OnEventDoAction(typeof(eDroneMovementDistanceRequest), nameof(Anon_30))]
+        [OnEventDoAction(typeof(eFenceRadiusRequest), nameof(Anon_31))]
+        [OnEventDoAction(typeof(eUpdateDroneMovementDistanceAndPosition), nameof(Anon_32))]
+        [OnEventDoAction(typeof(eBatteryThresholdResponse), nameof(Anon_33))]
+        [OnEventDoAction(typeof(eDroneMovementDistanceResponse), nameof(Anon_34))]
+        [OnEventDoAction(typeof(eFenceRadiusResponse), nameof(Anon_35))]
+        class WaitingForRequests_1 : State
         {
         }
     }
@@ -1296,78 +1427,92 @@ namespace PImplementation
             observes.Add(nameof(eStartGeoFence));
         }
         
-        public void Anon_26(Event currentMachine_dequeuedEvent)
+        public void Anon_36(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
-            PrtString TMP_tmp0_25 = ((PrtString)"");
+            PrtString TMP_tmp0_30 = ((PrtString)"");
             fence_alt_min_2 = (PrtInt)(((PrtInt)0));
             fence_alt_max_2 = (PrtInt)(((PrtInt)100));
             fence_radius_2 = (PrtInt)(((PrtInt)100));
             drone_horizontal_distance_to_origin_2 = (PrtInt)(((PrtInt)0));
             drone_altitude_2 = (PrtInt)(((PrtInt)0));
-            TMP_tmp0_25 = (PrtString)(((PrtString) String.Format("[spec machine] Geo Fence Enabled!")));
-            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_25);
+            TMP_tmp0_30 = (PrtString)(((PrtString) String.Format("[spec machine] Geo Fence Enabled!")));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_30);
             currentMachine.TryGotoState<GeoFenceEnabled>();
             return;
         }
-        public void Anon_27(Event currentMachine_dequeuedEvent)
+        public void Anon_37(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
-            PrtNamedTuple response_7 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            PrtNamedTuple response_10 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
             this.gotoPayload = null;
-            PrtInt TMP_tmp0_26 = ((PrtInt)0);
-            PrtInt TMP_tmp1_23 = ((PrtInt)0);
-            PrtInt TMP_tmp2_20 = ((PrtInt)0);
-            PrtInt TMP_tmp3_15 = ((PrtInt)0);
-            PrtBool TMP_tmp4_14 = ((PrtBool)false);
-            PrtInt TMP_tmp5_12 = ((PrtInt)0);
-            PrtInt TMP_tmp6_10 = ((PrtInt)0);
-            PrtString TMP_tmp7_10 = ((PrtString)"");
-            PrtBool TMP_tmp8_8 = ((PrtBool)false);
-            PrtBool TMP_tmp9_6 = ((PrtBool)false);
-            PrtBool TMP_tmp10_4 = ((PrtBool)false);
-            PrtInt TMP_tmp11_3 = ((PrtInt)0);
-            PrtInt TMP_tmp12_3 = ((PrtInt)0);
-            PrtInt TMP_tmp13_3 = ((PrtInt)0);
+            PrtInt TMP_tmp0_31 = ((PrtInt)0);
+            PrtInt TMP_tmp1_28 = ((PrtInt)0);
+            PrtInt TMP_tmp2_22 = ((PrtInt)0);
+            PrtInt TMP_tmp3_17 = ((PrtInt)0);
+            PrtBool TMP_tmp4_15 = ((PrtBool)false);
+            PrtInt TMP_tmp5_13 = ((PrtInt)0);
+            PrtInt TMP_tmp6_11 = ((PrtInt)0);
+            PrtString TMP_tmp7_11 = ((PrtString)"");
+            PrtBool TMP_tmp8_9 = ((PrtBool)false);
+            PrtBool TMP_tmp9_7 = ((PrtBool)false);
+            PrtBool TMP_tmp10_5 = ((PrtBool)false);
+            PrtInt TMP_tmp11_4 = ((PrtInt)0);
+            PrtInt TMP_tmp12_4 = ((PrtInt)0);
+            PrtInt TMP_tmp13_4 = ((PrtInt)0);
             PrtString TMP_tmp14_3 = ((PrtString)"");
-            TMP_tmp0_26 = (PrtInt)(((PrtNamedTuple)response_7)["vertical_movement"]);
-            TMP_tmp1_23 = (PrtInt)((drone_altitude_2) + (TMP_tmp0_26));
-            drone_altitude_2 = TMP_tmp1_23;
-            TMP_tmp2_20 = (PrtInt)(((PrtNamedTuple)response_7)["horizontal_movement"]);
-            TMP_tmp3_15 = (PrtInt)((drone_horizontal_distance_to_origin_2) + (TMP_tmp2_20));
-            drone_horizontal_distance_to_origin_2 = TMP_tmp3_15;
-            TMP_tmp4_14 = (PrtBool)((drone_horizontal_distance_to_origin_2) < (fence_radius_2));
-            TMP_tmp5_12 = (PrtInt)(((PrtInt)((IPrtValue)fence_radius_2)?.Clone()));
-            TMP_tmp6_10 = (PrtInt)(((PrtInt)((IPrtValue)drone_horizontal_distance_to_origin_2)?.Clone()));
-            TMP_tmp7_10 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence radius, fence radius = {0}, horizonal distance to origin = {1}",TMP_tmp5_12,TMP_tmp6_10)));
-            currentMachine.TryAssert(TMP_tmp4_14,"Assertion Failed: " + TMP_tmp7_10);
-            TMP_tmp8_8 = (PrtBool)((drone_altitude_2) > (fence_alt_min_2));
-            TMP_tmp10_4 = (PrtBool)(((PrtBool)((IPrtValue)TMP_tmp8_8)?.Clone()));
-            if (TMP_tmp10_4)
+            TMP_tmp0_31 = (PrtInt)(((PrtNamedTuple)response_10)["vertical_movement"]);
+            TMP_tmp1_28 = (PrtInt)((drone_altitude_2) + (TMP_tmp0_31));
+            drone_altitude_2 = TMP_tmp1_28;
+            TMP_tmp2_22 = (PrtInt)(((PrtNamedTuple)response_10)["horizontal_movement"]);
+            TMP_tmp3_17 = (PrtInt)((drone_horizontal_distance_to_origin_2) + (TMP_tmp2_22));
+            drone_horizontal_distance_to_origin_2 = TMP_tmp3_17;
+            TMP_tmp4_15 = (PrtBool)((drone_horizontal_distance_to_origin_2) < (fence_radius_2));
+            TMP_tmp5_13 = (PrtInt)(((PrtInt)((IPrtValue)fence_radius_2)?.Clone()));
+            TMP_tmp6_11 = (PrtInt)(((PrtInt)((IPrtValue)drone_horizontal_distance_to_origin_2)?.Clone()));
+            TMP_tmp7_11 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence radius, fence radius = {0}, horizonal distance to origin = {1}",TMP_tmp5_13,TMP_tmp6_11)));
+            currentMachine.TryAssert(TMP_tmp4_15,"Assertion Failed: " + TMP_tmp7_11);
+            TMP_tmp8_9 = (PrtBool)((drone_altitude_2) > (fence_alt_min_2));
+            TMP_tmp10_5 = (PrtBool)(((PrtBool)((IPrtValue)TMP_tmp8_9)?.Clone()));
+            if (TMP_tmp10_5)
             {
-                TMP_tmp9_6 = (PrtBool)((drone_altitude_2) < (fence_alt_max_2));
-                TMP_tmp10_4 = (PrtBool)(((PrtBool)((IPrtValue)TMP_tmp9_6)?.Clone()));
+                TMP_tmp9_7 = (PrtBool)((drone_altitude_2) < (fence_alt_max_2));
+                TMP_tmp10_5 = (PrtBool)(((PrtBool)((IPrtValue)TMP_tmp9_7)?.Clone()));
             }
-            TMP_tmp11_3 = (PrtInt)(((PrtInt)((IPrtValue)fence_alt_min_2)?.Clone()));
-            TMP_tmp12_3 = (PrtInt)(((PrtInt)((IPrtValue)fence_alt_max_2)?.Clone()));
-            TMP_tmp13_3 = (PrtInt)(((PrtInt)((IPrtValue)drone_altitude_2)?.Clone()));
-            TMP_tmp14_3 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence altitude, fence altitude min = {0}, fence altitude max = {1}, current altitude = {2}",TMP_tmp11_3,TMP_tmp12_3,TMP_tmp13_3)));
-            currentMachine.TryAssert(TMP_tmp10_4,"Assertion Failed: " + TMP_tmp14_3);
+            TMP_tmp11_4 = (PrtInt)(((PrtInt)((IPrtValue)fence_alt_min_2)?.Clone()));
+            TMP_tmp12_4 = (PrtInt)(((PrtInt)((IPrtValue)fence_alt_max_2)?.Clone()));
+            TMP_tmp13_4 = (PrtInt)(((PrtInt)((IPrtValue)drone_altitude_2)?.Clone()));
+            TMP_tmp14_3 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence altitude, fence altitude min = {0}, fence altitude max = {1}, current altitude = {2}",TMP_tmp11_4,TMP_tmp12_4,TMP_tmp13_4)));
+            currentMachine.TryAssert(TMP_tmp10_5,"Assertion Failed: " + TMP_tmp14_3);
         }
-        public void Anon_28(Event currentMachine_dequeuedEvent)
+        public void Anon_38(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
         }
         [Start]
-        [OnEventDoAction(typeof(eStartGeoFence), nameof(Anon_26))]
+        [OnEventDoAction(typeof(eStartGeoFence), nameof(Anon_36))]
         class Init_6 : State
         {
         }
-        [OnEventDoAction(typeof(eDroneMovementResponse), nameof(Anon_27))]
-        [OnEventDoAction(typeof(eRequestDroneMovement), nameof(Anon_28))]
-        [OnEventDoAction(typeof(eFenceReached), nameof(Anon_28))]
-        [OnEventDoAction(typeof(eFenceDistanced), nameof(Anon_28))]
+        [OnEventDoAction(typeof(eDroneMovementResponse), nameof(Anon_37))]
+        [OnEventDoAction(typeof(eRequestDroneMovement), nameof(Anon_38))]
+        [OnEventDoAction(typeof(eFenceReached), nameof(Anon_38))]
+        [OnEventDoAction(typeof(eFenceDistanced), nameof(Anon_38))]
         class GeoFenceEnabled : State
+        {
+        }
+    }
+}
+namespace PImplementation
+{
+    internal partial class ConflictSpecs : PMonitor
+    {
+        static ConflictSpecs() {
+            observes.Add(nameof(eStartGeoFence));
+        }
+        
+        [Start]
+        class Init_7 : State
         {
         }
     }
@@ -1385,60 +1530,60 @@ namespace PImplementation
             observes.Add(nameof(eUpdateBatteryPercentage));
         }
         
-        public void Anon_29(Event currentMachine_dequeuedEvent)
+        public void Anon_39(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
             PrtNamedTuple startBatteryFailSafeResponse = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
             this.gotoPayload = null;
-            PrtInt TMP_tmp0_27 = ((PrtInt)0);
-            PrtInt TMP_tmp1_24 = ((PrtInt)0);
+            PrtInt TMP_tmp0_32 = ((PrtInt)0);
+            PrtInt TMP_tmp1_29 = ((PrtInt)0);
             current_battery = (PrtInt)(((PrtInt)100));
-            TMP_tmp0_27 = (PrtInt)(((PrtNamedTuple)startBatteryFailSafeResponse)["landing_threshold_amount"]);
-            TMP_tmp1_24 = (PrtInt)(((PrtInt)((IPrtValue)TMP_tmp0_27)?.Clone()));
-            landing_threshold_2 = TMP_tmp1_24;
+            TMP_tmp0_32 = (PrtInt)(((PrtNamedTuple)startBatteryFailSafeResponse)["landing_threshold_amount"]);
+            TMP_tmp1_29 = (PrtInt)(((PrtInt)((IPrtValue)TMP_tmp0_32)?.Clone()));
+            landing_threshold_2 = TMP_tmp1_29;
             currentMachine.TryGotoState<InAir>();
             return;
         }
-        public void Anon_30(Event currentMachine_dequeuedEvent)
+        public void Anon_40(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
-            PrtInt TMP_tmp0_28 = ((PrtInt)0);
-            PrtInt TMP_tmp1_25 = ((PrtInt)0);
-            PrtString TMP_tmp2_21 = ((PrtString)"");
-            TMP_tmp0_28 = (PrtInt)((current_battery) - (((PrtInt)1)));
-            current_battery = TMP_tmp0_28;
-            TMP_tmp1_25 = (PrtInt)(((PrtInt)((IPrtValue)current_battery)?.Clone()));
-            TMP_tmp2_21 = (PrtString)(((PrtString) String.Format("[spec machine] battery updated, battery = {0}",TMP_tmp1_25)));
-            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp2_21);
+            PrtInt TMP_tmp0_33 = ((PrtInt)0);
+            PrtInt TMP_tmp1_30 = ((PrtInt)0);
+            PrtString TMP_tmp2_23 = ((PrtString)"");
+            TMP_tmp0_33 = (PrtInt)((current_battery) - (((PrtInt)1)));
+            current_battery = TMP_tmp0_33;
+            TMP_tmp1_30 = (PrtInt)(((PrtInt)((IPrtValue)current_battery)?.Clone()));
+            TMP_tmp2_23 = (PrtString)(((PrtString) String.Format("[spec machine] battery updated, battery = {0}",TMP_tmp1_30)));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp2_23);
             currentMachine.TryGotoState<InAir>();
             return;
         }
-        public void Anon_31(Event currentMachine_dequeuedEvent)
+        public void Anon_41(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
-            PrtString TMP_tmp0_29 = ((PrtString)"");
-            PrtBool TMP_tmp1_26 = ((PrtBool)false);
-            PrtString TMP_tmp2_22 = ((PrtString)"");
-            TMP_tmp0_29 = (PrtString)(((PrtString) String.Format("spec machine entered landed state")));
-            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_29);
-            TMP_tmp1_26 = (PrtBool)((current_battery) >= (landing_threshold_2));
-            TMP_tmp2_22 = (PrtString)(((PrtString) String.Format("[spec machine] battery level is below safe landing threshold")));
-            currentMachine.TryAssert(TMP_tmp1_26,"Assertion Failed: " + TMP_tmp2_22);
+            PrtString TMP_tmp0_34 = ((PrtString)"");
+            PrtBool TMP_tmp1_31 = ((PrtBool)false);
+            PrtString TMP_tmp2_24 = ((PrtString)"");
+            TMP_tmp0_34 = (PrtString)(((PrtString) String.Format("spec machine entered landed state")));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_34);
+            TMP_tmp1_31 = (PrtBool)((current_battery) >= (landing_threshold_2));
+            TMP_tmp2_24 = (PrtString)(((PrtString) String.Format("[spec machine] battery level is below safe landing threshold")));
+            currentMachine.TryAssert(TMP_tmp1_31,"Assertion Failed: " + TMP_tmp2_24);
         }
         [Start]
-        [OnEventDoAction(typeof(eStartBatteryFailSafe), nameof(Anon_29))]
-        class Init_7 : State
+        [OnEventDoAction(typeof(eStartBatteryFailSafe), nameof(Anon_39))]
+        class Init_8 : State
         {
         }
         [Hot]
-        [OnEventDoAction(typeof(eUpdateBatteryPercentage), nameof(Anon_30))]
+        [OnEventDoAction(typeof(eUpdateBatteryPercentage), nameof(Anon_40))]
         [OnEventGotoState(typeof(eLanding), typeof(InAir))]
         [OnEventGotoState(typeof(eLanded), typeof(Landed_2))]
         class InAir : State
         {
         }
         [Cold]
-        [OnEntry(nameof(Anon_31))]
+        [OnEntry(nameof(Anon_41))]
         class Landed_2 : State
         {
         }
@@ -1493,20 +1638,20 @@ namespace PImplementation
             this.creates.Add(nameof(I_BatteryFailSafe));
         }
         
-        public void Anon_32(Event currentMachine_dequeuedEvent)
+        public void Anon_42(Event currentMachine_dequeuedEvent)
         {
             Test_BatteryFailSafe currentMachine = this;
-            PrtInt TMP_tmp0_30 = ((PrtInt)0);
-            TMP_tmp0_30 = (PrtInt)(((PrtInt)20));
-            currentMachine.CreateInterface<I_BatteryFailSafe>(currentMachine, TMP_tmp0_30);
+            PrtInt TMP_tmp0_35 = ((PrtInt)0);
+            TMP_tmp0_35 = (PrtInt)(((PrtInt)20));
+            currentMachine.CreateInterface<I_BatteryFailSafe>(currentMachine, TMP_tmp0_35);
         }
         [Start]
         [OnEntry(nameof(InitializeParametersFunction))]
-        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_8))]
+        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_9))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_32))]
-        class Init_8 : State
+        [OnEntry(nameof(Anon_42))]
+        class Init_9 : State
         {
         }
     }
@@ -1560,18 +1705,18 @@ namespace PImplementation
             this.creates.Add(nameof(I_GeoFence));
         }
         
-        public void Anon_33(Event currentMachine_dequeuedEvent)
+        public void Anon_43(Event currentMachine_dequeuedEvent)
         {
             Test_GeoFence currentMachine = this;
             currentMachine.CreateInterface<I_GeoFence>(currentMachine);
         }
         [Start]
         [OnEntry(nameof(InitializeParametersFunction))]
-        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_9))]
+        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_10))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_33))]
-        class Init_9 : State
+        [OnEntry(nameof(Anon_43))]
+        class Init_10 : State
         {
         }
     }
@@ -1628,26 +1773,26 @@ namespace PImplementation
             this.creates.Add(nameof(I_PowerManagement));
         }
         
-        public void Anon_34(Event currentMachine_dequeuedEvent)
+        public void Anon_44(Event currentMachine_dequeuedEvent)
         {
             Test_PowerManagement currentMachine = this;
-            PMachineValue TMP_tmp0_31 = null;
-            PMachineValue TMP_tmp1_27 = null;
-            PMachineValue TMP_tmp2_23 = null;
-            TMP_tmp0_31 = (PMachineValue)(currentMachine.CreateInterface<I_PowerManagement>( currentMachine));
-            powerManager_2 = TMP_tmp0_31;
-            TMP_tmp1_27 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
-            currentMachine.CreateInterface<I_BatteryFailSafeModified>(currentMachine, TMP_tmp1_27);
-            TMP_tmp2_23 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
-            currentMachine.CreateInterface<I_GeoFenceModified>(currentMachine, TMP_tmp2_23);
+            PMachineValue TMP_tmp0_36 = null;
+            PMachineValue TMP_tmp1_32 = null;
+            PMachineValue TMP_tmp2_25 = null;
+            TMP_tmp0_36 = (PMachineValue)(currentMachine.CreateInterface<I_PowerManagement>( currentMachine));
+            powerManager_2 = TMP_tmp0_36;
+            TMP_tmp1_32 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
+            currentMachine.CreateInterface<I_BatteryFailSafeModified>(currentMachine, TMP_tmp1_32);
+            TMP_tmp2_25 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
+            currentMachine.CreateInterface<I_GeoFenceModified>(currentMachine, TMP_tmp2_25);
         }
         [Start]
         [OnEntry(nameof(InitializeParametersFunction))]
-        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_10))]
+        [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_11))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_34))]
-        class Init_10 : State
+        [OnEntry(nameof(Anon_44))]
+        class Init_11 : State
         {
         }
     }

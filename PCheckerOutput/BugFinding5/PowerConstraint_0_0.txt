@@ -4,7 +4,7 @@
 <MonitorLog> Monitor 'PowerManagementSpec' raised event 'GotoStateEvent' in state 'Init_5'.
 <MonitorLog> PowerManagementSpec exits state 'Init_5'.
 <MonitorLog> PowerManagementSpec enters state 'WaitingForRequests_1'.
-<ErrorLog> Assertion Failed: [spec machine] remaining drone battery cannot make it back to the launch point, Available Range = 0, Distance to Origin = 0
+<ErrorLog> Assertion Failed: [spec machine] The drone has exceeded the fence boundary!
 <StrategyLog> Found bug using 'random' strategy.
 <StrategyLog> Checking statistics:
 <StrategyLog> Found 1 bug.

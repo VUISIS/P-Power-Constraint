@@ -1,0 +1,686 @@
+<TestLog> Running test 'powermanager'.
+<CreateLog> PowerManagementSpec was created.
+<MonitorLog> PowerManagementSpec enters state 'Init_5'.
+<MonitorLog> Monitor 'PowerManagementSpec' raised event 'GotoStateEvent' in state 'Init_5'.
+<MonitorLog> PowerManagementSpec exits state 'Init_5'.
+<MonitorLog> PowerManagementSpec enters state 'WaitingForRequests_1'.
+<CreateLog> Plang.CSharpRuntime._GodMachine(1) was created by task '2'.
+<CreateLog> PImplementation.Test_PowerManagement(2) was created by Plang.CSharpRuntime._GodMachine(1).
+<StateLog> PImplementation.Test_PowerManagement(2) enters state 'Init_11'.
+<CreateLog> PowerManagement(3) was created by PImplementation.Test_PowerManagement(2).
+<CreateLog> BatteryFailSafeModified(4) was created by PImplementation.Test_PowerManagement(2).
+<StateLog> BatteryFailSafeModified(4) enters state 'Init'.
+<PrintLog> Battery Fail Safe Enabled!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<StateLog> PowerManagement(3) enters state 'Init_3'.
+<GotoLog> PowerManagement(3) is transitioning from state 'Init_3' to state 'WaitingForRequests'.
+<StateLog> PowerManagement(3) exits state 'Init_3'.
+<StateLog> PowerManagement(3) enters state 'WaitingForRequests'.
+<CreateLog> GeoFenceModified(5) was created by PImplementation.Test_PowerManagement(2).
+<SendLog> 'BatteryFailSafeModified(4)' in state 'Init' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'Init' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<GotoLog> BatteryFailSafeModified(4) is transitioning from state 'Init' to state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) exits state 'Init'.
+<StateLog> BatteryFailSafeModified(4) enters state 'MonitorAndUpdate'.
+<StateLog> GeoFenceModified(5) enters state 'Init_4'.
+<PrintLog> GeoFence Enabled!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'Init_4' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:0, droneHorizontalPosition:0, droneVerticalPosition:0, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'Init_4' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'Init_4' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'Init_4'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 0
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:0, droneHorizontalPosition:0, droneVerticalPosition:0, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:50, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:50, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 0
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-8, vertical_movement:-7, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-8, vertical_movement:-7, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceReached' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'Holding_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'Holding_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceReached' in state 'Holding_1'.
+<PrintLog> Fence Reached! Starting Holding Pattern
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'Holding_1' sent event 'eFenceDistanced' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'Holding_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'Holding_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceDistanced' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 0
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-6, vertical_movement:1, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-6, vertical_movement:1, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-5, droneHorizontalPosition:-6, droneVerticalPosition:1, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-5, droneHorizontalPosition:-6, droneVerticalPosition:1, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:47.5, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:47.5, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:-5, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-4, vertical_movement:-7, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:-5, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = -5
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-4, vertical_movement:-7, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceReached' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'Holding_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'Holding_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceReached' in state 'Holding_1'.
+<PrintLog> Fence Reached! Starting Holding Pattern
+<SendLog> 'GeoFenceModified(5)' in state 'Holding_1' sent event 'eFenceDistanced' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'Holding_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'Holding_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceDistanced' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:-5, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-8, vertical_movement:9, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:-5, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 105
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-8, vertical_movement:9, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:1, droneHorizontalPosition:-14, droneVerticalPosition:10, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:1, droneHorizontalPosition:-14, droneVerticalPosition:10, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:105, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:105, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:50.5, >)' to 'GeoFenceModified(5)'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:-4, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:-4, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = -4
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:50.5, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:1, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-1, vertical_movement:5, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:1, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 104
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-1, vertical_movement:5, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:104, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:-15, droneVerticalPosition:15, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:104, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:-4, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:-4, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = -4
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:-15, droneVerticalPosition:15, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:52, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:4, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:4, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:52, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 0
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:3, vertical_movement:5, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:3, vertical_movement:5, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:8, droneHorizontalPosition:-12, droneVerticalPosition:20, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 100
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:8, droneHorizontalPosition:-12, droneVerticalPosition:20, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:54, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:54, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:100, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:8, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:5, vertical_movement:7, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:5, vertical_movement:7, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:12, droneHorizontalPosition:-7, droneVerticalPosition:27, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:8, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 8
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:12, droneHorizontalPosition:-7, droneVerticalPosition:27, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:60, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:20, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:20, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 80
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:60, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:80, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:3, vertical_movement:7, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:80, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:3, vertical_movement:7, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:10, droneHorizontalPosition:-4, droneVerticalPosition:34, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:20, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:10, droneHorizontalPosition:-4, droneVerticalPosition:34, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:20, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 20
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:6, vertical_movement:-4, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:10, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:10, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 70
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:6, vertical_movement:-4, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:70, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:70, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:2, droneHorizontalPosition:2, droneVerticalPosition:30, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:2, droneHorizontalPosition:2, droneVerticalPosition:30, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:51, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:51, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:32, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:32, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 32
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-7, vertical_movement:-4, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-7, vertical_movement:-4, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-11, droneHorizontalPosition:-5, droneVerticalPosition:26, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:2, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:2, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 68
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:68, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-11, droneHorizontalPosition:-5, droneVerticalPosition:26, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:45.5, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:68, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:45.5, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:21, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-1, vertical_movement:7, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:-1, vertical_movement:7, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:21, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 21
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:6, droneHorizontalPosition:-6, droneVerticalPosition:33, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:6, droneHorizontalPosition:-6, droneVerticalPosition:33, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:-5, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:-5, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 73
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:73, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:47.5, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:73, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:47.5, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:27, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:5, vertical_movement:5, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:27, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 27
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:5, vertical_movement:5, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:10, droneHorizontalPosition:-1, droneVerticalPosition:38, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:0, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 73
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:10, droneHorizontalPosition:-1, droneVerticalPosition:38, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:73, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:73, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:37, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:37, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 37
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:7, vertical_movement:-1, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:7, vertical_movement:-1, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:10, >)' to 'BatteryFailSafeModified(4)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:6, droneHorizontalPosition:6, droneVerticalPosition:37, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:6, droneHorizontalPosition:6, droneVerticalPosition:37, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:10, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 63
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:63, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:58, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:58, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:63, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:2, vertical_movement:2, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:2, vertical_movement:2, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:8, droneVerticalPosition:39, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:43, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:8, droneVerticalPosition:39, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:4, vertical_movement:-8, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:4, vertical_movement:-8, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-4, droneHorizontalPosition:12, droneVerticalPosition:31, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:-4, droneHorizontalPosition:12, droneVerticalPosition:31, >)' in state 'WaitingForRequests'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:53, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:43, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 43
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:53, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:6, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:6, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 57
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:2, vertical_movement:2, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:2, vertical_movement:2, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:14, droneVerticalPosition:33, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:4, droneHorizontalPosition:14, droneVerticalPosition:33, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:57, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:55, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:57, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:4, vertical_movement:-4, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:47, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:4, vertical_movement:-4, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:0, droneHorizontalPosition:18, droneVerticalPosition:29, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:0, droneHorizontalPosition:18, droneVerticalPosition:29, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:47, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 47
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:52, >)' to 'GeoFenceModified(5)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:52, >)' in state 'MonitorAndUpdate_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:4, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:4, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 53
+<PrintLog> battery above threshold, continue monitoring!
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneBatteryRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:53, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdRequest' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'GenerateMovement_1' sent event 'eDroneMovementResponseFloat with payload (<horizontal_movement:6, vertical_movement:5, >)' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'GenerateMovement_1' to state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) exits state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) enters state 'MonitorAndUpdate_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eDroneMovementResponseFloat with payload (<horizontal_movement:6, vertical_movement:5, >)' in state 'MonitorAndUpdate_1'.
+<MonitorLog> PowerManagementSpec is processing event 'eUpdateDroneMovementDistanceAndPosition' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneBatteryRequest with payload (<batteryPercentage:53, >)' in state 'WaitingForRequests'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:11, droneHorizontalPosition:24, droneVerticalPosition:34, >)' to 'PowerManagement(3)'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eBatteryThresholdRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eBatteryThresholdResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' to 'PowerManagement(3)'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eBatteryThresholdResponse with payload (<batteryThreshold:47, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eUpdateDroneMovementDistanceAndPosition with payload (<droneMovementDistance:11, droneHorizontalPosition:24, droneVerticalPosition:34, >)' in state 'WaitingForRequests'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eBatteryThresholdResponse with payload (<batteryThreshold:47, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery threshold updated, threshold = 47
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceRequest' in state 'WaitingForRequests_1'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eFenceRadiusRequest with payload (<source:GeoFenceModified(5), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eFenceRadiusResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eFenceRadiusResponse with payload (<fenceRadius:55.5, >)' to 'GeoFenceModified(5)'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' to 'PowerManagement(3)'.
+<DequeueLog> 'PowerManagement(3)' dequeued event 'eDroneMovementDistanceRequest with payload (<source:BatteryFailSafeModified(4), >)' in state 'WaitingForRequests'.
+<MonitorLog> PowerManagementSpec is processing event 'eDroneMovementDistanceResponse' in state 'WaitingForRequests_1'.
+<SendLog> 'PowerManagement(3)' in state 'WaitingForRequests' sent event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:11, >)' to 'BatteryFailSafeModified(4)'.
+<DequeueLog> 'BatteryFailSafeModified(4)' dequeued event 'eDroneMovementDistanceResponse with payload (<droneMovementDistance:11, >)' in state 'MonitorAndUpdate'.
+<PrintLog> battery updated, battery = 42
+<PrintLog> battery below threshold, landing initiated!
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eFenceRadiusResponse with payload (<fenceRadius:55.5, >)' in state 'MonitorAndUpdate_1'.
+<SendLog> 'GeoFenceModified(5)' in state 'MonitorAndUpdate_1' sent event 'eRequestDroneMovement' to 'GeoFenceModified(5)'.
+<GotoLog> GeoFenceModified(5) is transitioning from state 'MonitorAndUpdate_1' to state 'GenerateMovement_1'.
+<StateLog> GeoFenceModified(5) exits state 'MonitorAndUpdate_1'.
+<StateLog> GeoFenceModified(5) enters state 'GenerateMovement_1'.
+<DequeueLog> 'GeoFenceModified(5)' dequeued event 'eRequestDroneMovement' in state 'GenerateMovement_1'.
+<SendLog> 'BatteryFailSafeModified(4)' in state 'MonitorAndUpdate' sent event 'eLanding' to 'BatteryFailSafeModified(4)'.
+<GotoLog> BatteryFailSafeModified(4) is transitioning from state 'MonitorAndUpdate' to state 'Landing'.
+<StateLog> BatteryFailSafeModified(4) exits state 'MonitorAndUpdate'.
+<StateLog> BatteryFailSafeModified(4) enters state 'Landing'.
+<ErrorLog> Assertion Failed: hello!
+<StrategyLog> Found bug using 'random' strategy.
+<StrategyLog> Checking statistics:
+<StrategyLog> Found 1 bug.
+<StrategyLog> Scheduling statistics:
+<StrategyLog> Explored 1 schedule: 1 fair and 0 unfair.
+<StrategyLog> Found 100.00% buggy schedules.
+<StrategyLog> Number of scheduling points in fair terminating schedules: 393 (min), 393 (avg), 393 (max).

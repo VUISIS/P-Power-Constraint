@@ -70,3 +70,21 @@ p check -tc <test-case>
 # TODO
 - change action for battery fail safe
   - make sure it returns to origin instead of land at its spot. This can be done by creating a new event that is passed to GeoFenceModified via PowerManager, because GeoFenceModified keeps track of the location of the drone.
+
+## Line Count
+```bash
+PowerConstraint $ find . -name '*.p' | xargs wc -l                        main*
+      40 ./PTst/TestDriver.p
+      37 ./PTst/TestScript.p
+     105 ./PSrc/BatteryFailSafeModified.p
+      81 ./PSrc/BatteryFailSafe.p
+     121 ./PSrc/GeoFence.p
+     110 ./PSrc/PowerManagement.p
+     131 ./PSrc/GeoFenceModified.p
+       6 ./PSrc/PowerConstraintModules.p
+     125 ./PSpec/PowerManagementSpec.p
+      54 ./PSpec/GeoFenceSpec.p
+       5 ./PSpec/ConflictSpec.p
+      45 ./PSpec/BatteryFailSafeSpec.p
+     860 total
+```

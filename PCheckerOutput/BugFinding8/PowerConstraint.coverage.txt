@@ -1,66 +1,107 @@
-Total event coverage: 41.7%
+Total event coverage: 36.0%
 ===========================
-StateMachine: PImplementation.GeoFence
-======================================
-Event coverage: 66.7%
-
-	State: __InitState__
-		State event coverage: 100.0%
-		Events received: PImplementation.GeoFence+ConstructorEvent
-		Events sent: PImplementation.GeoFence+ConstructorEvent
-		Next states: Init_2
-
-	State: Init_2
-		State has no expected events, so coverage is 100%
-		Events sent: PImplementation.eStartGeoFence
-		Previous states: __InitState__
-		Next states: Monitoring_1
-
-	State: Monitoring_1
-		State event coverage: 66.7%
-		Events received: PImplementation.eDroneMovementResponse, PImplementation.eStartGeoFence
-		Events sent: PImplementation.eRequestDroneMovement
-		Events not covered: PImplementation.eFenceDistanced
-		Previous states: GenerateMovement, Init_2
-		Next states: GenerateMovement
-
-	State: Holding is uncovered
-		Events not covered: PImplementation.eFenceReached
-
-	State: GenerateMovement
-		State event coverage: 100.0%
-		Events received: PImplementation.eRequestDroneMovement
-		Events sent: PImplementation.eDroneMovementResponse
-		Previous states: Monitoring_1
-		Next states: Monitoring_1
-
-Monitor: PImplementation.GeoFenceSpec
-=====================================
-Event coverage: 0.0%
-
-	State: Init_5 is uncovered
-		Events received: eStartGeoFence
-		Events not covered: PImplementation.eStartGeoFence
-		Previous states: Init_5
-		Next states: GeoFenceEnabled, Init_5
-
-	State: GeoFenceEnabled is uncovered
-		Events received: eDroneMovementResponse, eRequestDroneMovement
-		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
-		Previous states: GeoFenceEnabled, Init_5
-		Next states: GeoFenceEnabled
-
-StateMachine: PImplementation.Test_GeoFence
-===========================================
+StateMachine: PImplementation.BatteryFailSafeModified
+=====================================================
 Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: PImplementation.Test_GeoFence+ConstructorEvent
-		Events sent: PImplementation.Test_GeoFence+ConstructorEvent
-		Next states: Init_8
+		Events received: PImplementation.BatteryFailSafeModified+ConstructorEvent
+		Events sent: PImplementation.BatteryFailSafeModified+ConstructorEvent
+		Next states: Init
 
-	State: Init_8
+	State: Init
+		State has no expected events, so coverage is 100%
+		Events sent: PImplementation.eBatteryThresholdRequest, PImplementation.eUpdateDroneBatteryRequest
+		Previous states: __InitState__
+		Next states: MonitorAndUpdate
+
+	State: MonitorAndUpdate
+		State event coverage: 100.0%
+		Events received: PImplementation.eBatteryThresholdResponse, PImplementation.eDroneMovementDistanceResponse
+		Events sent: PImplementation.eDroneMovementDistanceRequest, PImplementation.eUpdateBatteryPercentage
+		Previous states: Init, MonitorAndUpdate
+		Next states: MonitorAndUpdate
+
+	State: Landing
+		State has no expected events, so coverage is 100%
+
+	State: Landed
+		State has no expected events, so coverage is 100%
+
+StateMachine: PImplementation.GeoFenceModified
+==============================================
+Event coverage: 16.7%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.GeoFenceModified+ConstructorEvent
+		Events sent: PImplementation.GeoFenceModified+ConstructorEvent
+		Next states: Init_4
+
+	State: Init_4
+		State has no expected events, so coverage is 100%
+		Events sent: PImplementation.eFenceRadiusRequest, PImplementation.eUpdateDroneMovementDistanceAndPosition
+		Previous states: __InitState__
+		Next states: MonitorAndUpdate_1
+
+	State: MonitorAndUpdate_1 is uncovered
+		Events not covered: PImplementation.eDroneMovementResponseFloat, PImplementation.eFenceDistanced, PImplementation.eFenceRadiusResponse
+		Previous states: Init_4
+
+	State: Holding_1 is uncovered
+		Events not covered: PImplementation.eFenceReached
+
+	State: GenerateMovement_1 is uncovered
+		Events not covered: PImplementation.eRequestDroneMovement
+
+StateMachine: PImplementation.PowerManagement
+=============================================
+Event coverage: 66.7%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.PowerManagement+ConstructorEvent
+		Events sent: PImplementation.PowerManagement+ConstructorEvent
+		Next states: Init_3
+
+	State: Init_3
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
+		Next states: WaitingForRequests
+
+	State: WaitingForRequests
+		State event coverage: 60.0%
+		Events received: PImplementation.eBatteryThresholdRequest, PImplementation.eDroneMovementDistanceRequest, PImplementation.eUpdateDroneBatteryRequest
+		Events sent: PImplementation.eBatteryThresholdResponse, PImplementation.eDroneMovementDistanceResponse
+		Events not covered: PImplementation.eFenceRadiusRequest, PImplementation.eUpdateDroneMovementDistanceAndPosition
+		Previous states: Init_3
+
+Monitor: PImplementation.PowerManagementSpec
+============================================
+Event coverage: 0.0%
+
+	State: Init_5
+		State has no expected events, so coverage is 100%
+		Next states: WaitingForRequests_1
+
+	State: WaitingForRequests_1 is uncovered
+		Events received: eBatteryThresholdRequest, eBatteryThresholdResponse, eDroneMovementDistanceRequest, eDroneMovementDistanceResponse, eFenceRadiusRequest, eUpdateBatteryPercentage, eUpdateDroneBatteryRequest, eUpdateDroneMovementDistanceAndPosition
+		Events not covered: PImplementation.eBatteryThresholdRequest, PImplementation.eBatteryThresholdResponse, PImplementation.eDroneMovementDistanceRequest, PImplementation.eDroneMovementDistanceResponse, PImplementation.eFenceRadiusRequest, PImplementation.eFenceRadiusResponse, PImplementation.eUpdateBatteryPercentage, PImplementation.eUpdateDroneBatteryRequest, PImplementation.eUpdateDroneMovementDistanceAndPosition
+		Previous states: Init_5, WaitingForRequests_1
+		Next states: WaitingForRequests_1
+
+StateMachine: PImplementation.Test_PowerManagement
+==================================================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.Test_PowerManagement+ConstructorEvent
+		Events sent: PImplementation.Test_PowerManagement+ConstructorEvent
+		Next states: Init_11
+
+	State: Init_11
 		State has no expected events, so coverage is 100%
 		Previous states: __InitState__
 

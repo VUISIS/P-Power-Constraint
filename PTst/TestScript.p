@@ -1,3 +1,7 @@
+// ************************************
+// ***** TEST FOR ORIGINAL MODELS *****
+// ************************************
+
 // original battery fail safe model
 test battery [main=Test_BatteryFailSafe]:
   assert BatteryFailSafeSpec in
@@ -7,6 +11,14 @@ test battery [main=Test_BatteryFailSafe]:
 test geofence [main=Test_GeoFence]:
   assert GeoFenceSpec in
   (union GeoFence, { Test_GeoFence });
+
+// **************************************************
+// ***** TEST NEW SPECS ON COMBINED OLD MODELS ******
+// **************************************************
+
+// ************************************
+// ***** TEST FOR UPDATED MODELS ******
+// ************************************
 
 // test the updated models
 test powermanager [main=Test_PowerManagement]:
