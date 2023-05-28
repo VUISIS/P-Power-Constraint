@@ -89,7 +89,7 @@ machine BatteryFailSafeModified
   }
 
   state Landing {
-    entry {
+    on eLanding do {
       // TODO: return to launch point
       print "Landing initiated!";
       send this, eLanded;
@@ -98,7 +98,7 @@ machine BatteryFailSafeModified
   }
 
   state Landed {
-    entry {
+    on eLanded do {
       // terminating state
       print "Landed!";
     }

@@ -7,14 +7,22 @@ test battery [main=Test_BatteryFailSafe]:
   assert BatteryFailSafeSpec in
     (union BatteryFailSafe, { Test_BatteryFailSafe });
 
-// original geo-fence model
+
+// original geo-fence model + new specs (land at origin when battery drains)
 test geofence [main=Test_GeoFence]:
-  assert GeoFenceSpec in
+  assert GeoFenceConflictSpec in
   (union GeoFence, { Test_GeoFence });
+
 
 // **************************************************
 // ***** TEST NEW SPECS ON COMBINED OLD MODELS ******
 // **************************************************
+
+
+test geofenceconflict [main=Test_GeoFence]:
+  assert GeoFenceConflictSpec in
+  (union GeoFence, { Test_GeoFence });
+
 
 // ************************************
 // ***** TEST FOR UPDATED MODELS ******

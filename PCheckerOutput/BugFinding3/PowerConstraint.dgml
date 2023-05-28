@@ -1,92 +1,53 @@
 ﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
   <Nodes>
-    <Node Id='PImplementation.BatteryFailSafeModified' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.BatteryFailSafeModified.Init' Label='Init'/>
-    <Node Id='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Label='MonitorAndUpdate'/>
-    <Node Id='PImplementation.BatteryFailSafeModified.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.GeoFenceModified' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.GeoFenceModified.GenerateMovement_1' Label='GenerateMovement_1'/>
-    <Node Id='PImplementation.GeoFenceModified.Holding_1' Label='Holding_1'/>
-    <Node Id='PImplementation.GeoFenceModified.Init_4' Label='Init_4'/>
-    <Node Id='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='MonitorAndUpdate_1'/>
-    <Node Id='PImplementation.GeoFenceModified.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.PowerManagement' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.PowerManagement.Init_3' Label='Init_3'/>
-    <Node Id='PImplementation.PowerManagement.WaitingForRequests' Label='WaitingForRequests'/>
-    <Node Id='PImplementation.PowerManagement.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.PowerManagementSpec' Label='PImplementation.PowerManagementSpec' Category='Monitor' Group='Expanded'/>
-    <Node Id='PImplementation.PowerManagementSpec.Init_5' Label='Init_5'/>
-    <Node Id='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='WaitingForRequests_1'/>
-    <Node Id='PImplementation.Test_PowerManagement' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.Test_PowerManagement.Init_11' Label='Init_11'/>
-    <Node Id='PImplementation.Test_PowerManagement.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFence.GenerateMovement' Label='GenerateMovement'/>
+    <Node Id='PImplementation.GeoFence.Holding' Label='Holding'/>
+    <Node Id='PImplementation.GeoFence.Init_2' Label='Init_2'/>
+    <Node Id='PImplementation.GeoFence.Monitoring_1' Label='Monitoring_1'/>
+    <Node Id='PImplementation.GeoFence.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec' Label='PImplementation.GeoFenceConflictSpec' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='GeoFenceEnabled_1'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec.Init_7' Label='Init_7'/>
+    <Node Id='PImplementation.Test_GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.Test_GeoFence.Init_10' Label='Init_10'/>
+    <Node Id='PImplementation.Test_GeoFence.__InitState__' Label='__InitState__'/>
     <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
     <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
   </Nodes>
   <Links>
-    <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.Init' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeModified' Target='PImplementation.BatteryFailSafeModified.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eUpdateDroneBatteryRequest' Index='0' EventId='PImplementation.eUpdateDroneBatteryRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eBatteryThresholdRequest' Index='1' EventId='PImplementation.eBatteryThresholdRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneBatteryRequest' Index='0' EventId='eUpdateDroneBatteryRequest'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.Init' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eBatteryThresholdRequest' Index='1' EventId='eBatteryThresholdRequest'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eDroneMovementDistanceRequest' Index='0' EventId='PImplementation.eDroneMovementDistanceRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eUpdateDroneBatteryRequest' Index='1' EventId='PImplementation.eUpdateDroneBatteryRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eBatteryThresholdRequest' Index='2' EventId='PImplementation.eBatteryThresholdRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eDroneMovementDistanceRequest' Index='0' EventId='eDroneMovementDistanceRequest'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneBatteryRequest' Index='1' EventId='eUpdateDroneBatteryRequest'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eBatteryThresholdRequest' Index='2' EventId='eBatteryThresholdRequest'/>
-    <Link Source='PImplementation.BatteryFailSafeModified.__InitState__' Target='PImplementation.BatteryFailSafeModified.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.BatteryFailSafeModified+ConstructorEvent'/>
-    <Link Source='PImplementation.GeoFenceModified' Target='PImplementation.GeoFenceModified.GenerateMovement_1' Category='Contains'/>
-    <Link Source='PImplementation.GeoFenceModified' Target='PImplementation.GeoFenceModified.Holding_1' Category='Contains'/>
-    <Link Source='PImplementation.GeoFenceModified' Target='PImplementation.GeoFenceModified.Init_4' Category='Contains'/>
-    <Link Source='PImplementation.GeoFenceModified' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Category='Contains'/>
-    <Link Source='PImplementation.GeoFenceModified' Target='PImplementation.GeoFenceModified.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.GeoFenceModified.GenerateMovement_1' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.GeoFenceModified.GenerateMovement_1' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='eDroneMovementResponseFloat' Index='1' EventId='PImplementation.eDroneMovementResponseFloat' HandledBy='MonitorAndUpdate_1'/>
-    <Link Source='PImplementation.GeoFenceModified.Holding_1' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.GeoFenceModified.Holding_1' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='eFenceDistanced' Index='1' EventId='PImplementation.eFenceDistanced' HandledBy='MonitorAndUpdate_1'/>
-    <Link Source='PImplementation.GeoFenceModified.Init_4' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.GeoFenceModified.Init_4' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eUpdateDroneMovementDistanceAndPosition' Index='0' EventId='PImplementation.eUpdateDroneMovementDistanceAndPosition' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.GeoFenceModified.Init_4' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eFenceRadiusRequest' Index='1' EventId='PImplementation.eFenceRadiusRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.GeoFenceModified.Init_4' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneMovementDistanceAndPosition' Index='0' EventId='eUpdateDroneMovementDistanceAndPosition'/>
-    <Link Source='PImplementation.GeoFenceModified.Init_4' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eFenceRadiusRequest' Index='1' EventId='eFenceRadiusRequest'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.GeoFenceModified.GenerateMovement_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.GeoFenceModified.GenerateMovement_1' Label='eRequestDroneMovement' Index='1' EventId='PImplementation.eRequestDroneMovement' HandledBy='GenerateMovement_1'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.GeoFenceModified.Holding_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.GeoFenceModified.Holding_1' Label='eFenceReached' Index='1' EventId='PImplementation.eFenceReached' HandledBy='Holding_1'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eUpdateDroneMovementDistanceAndPosition' Index='0' EventId='PImplementation.eUpdateDroneMovementDistanceAndPosition' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.PowerManagement.WaitingForRequests' Label='eFenceRadiusRequest' Index='1' EventId='PImplementation.eFenceRadiusRequest' HandledBy='WaitingForRequests'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneMovementDistanceAndPosition' Index='0' EventId='eUpdateDroneMovementDistanceAndPosition'/>
-    <Link Source='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eFenceRadiusRequest' Index='1' EventId='eFenceRadiusRequest'/>
-    <Link Source='PImplementation.GeoFenceModified.__InitState__' Target='PImplementation.GeoFenceModified.Init_4' Label='ConstructorEvent' Index='0' EventId='PImplementation.GeoFenceModified+ConstructorEvent'/>
-    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.Init_3' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.WaitingForRequests' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagement' Target='PImplementation.PowerManagement.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagement.Init_3' Target='PImplementation.PowerManagement.WaitingForRequests' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Label='eBatteryThresholdResponse' Index='0' EventId='PImplementation.eBatteryThresholdResponse' HandledBy='MonitorAndUpdate'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.BatteryFailSafeModified.MonitorAndUpdate' Label='eDroneMovementDistanceResponse' Index='1' EventId='PImplementation.eDroneMovementDistanceResponse' HandledBy='MonitorAndUpdate'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.GeoFenceModified.MonitorAndUpdate_1' Label='eFenceRadiusResponse' Index='0' EventId='PImplementation.eFenceRadiusResponse' HandledBy='MonitorAndUpdate_1'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eBatteryThresholdResponse' Index='0' EventId='eBatteryThresholdResponse'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eFenceRadiusResponse' Index='1' EventId='eFenceRadiusResponse'/>
-    <Link Source='PImplementation.PowerManagement.WaitingForRequests' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eDroneMovementDistanceResponse' Index='2' EventId='eDroneMovementDistanceResponse'/>
-    <Link Source='PImplementation.PowerManagement.__InitState__' Target='PImplementation.PowerManagement.Init_3' Label='ConstructorEvent' Index='0' EventId='PImplementation.PowerManagement+ConstructorEvent'/>
-    <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.Init_5' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagementSpec.Init_5' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneBatteryRequest' Index='0' EventId='eUpdateDroneBatteryRequest'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eBatteryThresholdRequest' Index='1' EventId='eBatteryThresholdRequest'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eUpdateDroneMovementDistanceAndPosition' Index='2' EventId='eUpdateDroneMovementDistanceAndPosition'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eBatteryThresholdResponse' Index='3' EventId='eBatteryThresholdResponse'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eFenceRadiusRequest' Index='4' EventId='eFenceRadiusRequest'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eDroneMovementDistanceRequest' Index='5' EventId='eDroneMovementDistanceRequest'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eFenceRadiusResponse' Index='6' EventId='eFenceRadiusResponse'/>
-    <Link Source='PImplementation.PowerManagementSpec.WaitingForRequests_1' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='eDroneMovementDistanceResponse' Index='7' EventId='eDroneMovementDistanceResponse'/>
-    <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.Init_11' Category='Contains'/>
-    <Link Source='PImplementation.Test_PowerManagement' Target='PImplementation.Test_PowerManagement.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.Test_PowerManagement.__InitState__' Target='PImplementation.Test_PowerManagement.Init_11' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_PowerManagement+ConstructorEvent'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.GenerateMovement' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Holding' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Init_2' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Monitoring_1' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFence.Monitoring_1' Label='eDroneMovementResponse' Index='1' EventId='PImplementation.eDroneMovementResponse' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eDroneMovementResponse' Index='0' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFence.Monitoring_1' Label='eFenceDistanced' Index='1' EventId='PImplementation.eFenceDistanced' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceDistanced' Index='0' EventId='eFenceDistanced'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='eStartGeoFence' Index='1' EventId='PImplementation.eStartGeoFence' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFenceConflictSpec.Init_7' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='eRequestDroneMovement' Index='1' EventId='PImplementation.eRequestDroneMovement' HandledBy='GenerateMovement'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.Holding' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.Holding' Label='eFenceReached' Index='1' EventId='PImplementation.eFenceReached' HandledBy='Holding'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceReached' Index='1' EventId='eFenceReached'/>
+    <Link Source='PImplementation.GeoFence.__InitState__' Target='PImplementation.GeoFence.Init_2' Label='ConstructorEvent' Index='0' EventId='PImplementation.GeoFence+ConstructorEvent'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec' Target='PImplementation.GeoFenceConflictSpec.Init_7' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eDroneMovementResponse' Index='1' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceReached' Index='2' EventId='eFenceReached'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceDistanced' Index='3' EventId='eFenceDistanced'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.Init_7' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.Init_7' Target='PImplementation.GeoFenceConflictSpec.Init_7' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.Init_10' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence.__InitState__' Target='PImplementation.Test_GeoFence.Init_10' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_GeoFence+ConstructorEvent'/>
     <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
   </Links>
   <Styles>

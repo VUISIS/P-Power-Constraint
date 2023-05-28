@@ -382,11 +382,11 @@ namespace PImplementation
         class MonitorAndUpdate : State
         {
         }
-        [OnEntry(nameof(Anon_3))]
+        [OnEventDoAction(typeof(eLanding), nameof(Anon_3))]
         class Landing : State
         {
         }
-        [OnEntry(nameof(Anon_4))]
+        [OnEventDoAction(typeof(eLanded), nameof(Anon_4))]
         class Landed : State
         {
         }
@@ -1270,6 +1270,8 @@ namespace PImplementation
             observes.Add(nameof(eDroneMovementDistanceResponse));
             observes.Add(nameof(eFenceRadiusRequest));
             observes.Add(nameof(eFenceRadiusResponse));
+            observes.Add(nameof(eLanded));
+            observes.Add(nameof(eLanding));
             observes.Add(nameof(eUpdateDroneBatteryRequest));
             observes.Add(nameof(eUpdateDroneMovementDistanceAndPosition));
         }
@@ -1391,6 +1393,10 @@ namespace PImplementation
             TMP_tmp1_27 = (PrtFloat)(((PrtFloat)((IPrtValue)TMP_tmp0_29)?.Clone()));
             fenceRadius = TMP_tmp1_27;
         }
+        public void Anon_36(Event currentMachine_dequeuedEvent)
+        {
+            PowerManagementSpec currentMachine = this;
+        }
         [Start]
         [OnEntry(nameof(Anon_26))]
         class Init_5 : State
@@ -1405,6 +1411,8 @@ namespace PImplementation
         [OnEventDoAction(typeof(eBatteryThresholdResponse), nameof(Anon_33))]
         [OnEventDoAction(typeof(eDroneMovementDistanceResponse), nameof(Anon_34))]
         [OnEventDoAction(typeof(eFenceRadiusResponse), nameof(Anon_35))]
+        [OnEventDoAction(typeof(eLanding), nameof(Anon_36))]
+        [OnEventDoAction(typeof(eLanded), nameof(Anon_36))]
         class WaitingForRequests_1 : State
         {
         }
@@ -1427,7 +1435,7 @@ namespace PImplementation
             observes.Add(nameof(eStartGeoFence));
         }
         
-        public void Anon_36(Event currentMachine_dequeuedEvent)
+        public void Anon_37(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
             PrtString TMP_tmp0_30 = ((PrtString)"");
@@ -1441,7 +1449,7 @@ namespace PImplementation
             currentMachine.TryGotoState<GeoFenceEnabled>();
             return;
         }
-        public void Anon_37(Event currentMachine_dequeuedEvent)
+        public void Anon_38(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
             PrtNamedTuple response_10 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
@@ -1485,19 +1493,19 @@ namespace PImplementation
             TMP_tmp14_3 = (PrtString)(((PrtString) String.Format("[spec machine] drone exceeded fence altitude, fence altitude min = {0}, fence altitude max = {1}, current altitude = {2}",TMP_tmp11_4,TMP_tmp12_4,TMP_tmp13_4)));
             currentMachine.TryAssert(TMP_tmp10_5,"Assertion Failed: " + TMP_tmp14_3);
         }
-        public void Anon_38(Event currentMachine_dequeuedEvent)
+        public void Anon_39(Event currentMachine_dequeuedEvent)
         {
             GeoFenceSpec currentMachine = this;
         }
         [Start]
-        [OnEventDoAction(typeof(eStartGeoFence), nameof(Anon_36))]
+        [OnEventDoAction(typeof(eStartGeoFence), nameof(Anon_37))]
         class Init_6 : State
         {
         }
-        [OnEventDoAction(typeof(eDroneMovementResponse), nameof(Anon_37))]
-        [OnEventDoAction(typeof(eRequestDroneMovement), nameof(Anon_38))]
-        [OnEventDoAction(typeof(eFenceReached), nameof(Anon_38))]
-        [OnEventDoAction(typeof(eFenceDistanced), nameof(Anon_38))]
+        [OnEventDoAction(typeof(eDroneMovementResponse), nameof(Anon_38))]
+        [OnEventDoAction(typeof(eRequestDroneMovement), nameof(Anon_39))]
+        [OnEventDoAction(typeof(eFenceReached), nameof(Anon_39))]
+        [OnEventDoAction(typeof(eFenceDistanced), nameof(Anon_39))]
         class GeoFenceEnabled : State
         {
         }
@@ -1505,14 +1513,109 @@ namespace PImplementation
 }
 namespace PImplementation
 {
-    internal partial class ConflictSpecs : PMonitor
+    internal partial class GeoFenceConflictSpec : PMonitor
     {
-        static ConflictSpecs() {
+        private PrtFloat battery_percentage_2 = ((PrtFloat)0.0);
+        private PrtFloat power_consumption_rate = ((PrtFloat)0.0);
+        private PrtFloat landing_threshold_2 = ((PrtFloat)0.0);
+        private PrtInt drone_horizontal_distance_to_origin_3 = ((PrtInt)0);
+        private PrtInt drone_altitude_3 = ((PrtInt)0);
+        static GeoFenceConflictSpec() {
+            observes.Add(nameof(eDroneMovementResponse));
+            observes.Add(nameof(eFenceDistanced));
+            observes.Add(nameof(eFenceReached));
+            observes.Add(nameof(eRequestDroneMovement));
             observes.Add(nameof(eStartGeoFence));
         }
         
+        public void Anon_40(Event currentMachine_dequeuedEvent)
+        {
+            GeoFenceConflictSpec currentMachine = this;
+            PrtString TMP_tmp0_32 = ((PrtString)"");
+            battery_percentage_2 = (PrtFloat)(((PrtFloat)100));
+            power_consumption_rate = (PrtFloat)(((PrtFloat)1));
+            landing_threshold_2 = (PrtFloat)(((PrtFloat)20));
+            drone_horizontal_distance_to_origin_3 = (PrtInt)(((PrtInt)0));
+            drone_altitude_3 = (PrtInt)(((PrtInt)0));
+            TMP_tmp0_32 = (PrtString)(((PrtString) String.Format("[conflict spec machine] Geo Fence Enabled!")));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_32);
+            currentMachine.TryGotoState<GeoFenceEnabled_1>();
+            return;
+        }
+        public void Anon_41(Event currentMachine_dequeuedEvent)
+        {
+            GeoFenceConflictSpec currentMachine = this;
+            PrtNamedTuple response_11 = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
+            this.gotoPayload = null;
+            PrtFloat cumulative_movement = ((PrtFloat)0.0);
+            PrtInt TMP_tmp0_33 = ((PrtInt)0);
+            PrtInt TMP_tmp1_29 = ((PrtInt)0);
+            PrtInt TMP_tmp2_23 = ((PrtInt)0);
+            PrtFloat TMP_tmp3_18 = ((PrtFloat)0.0);
+            PrtInt TMP_tmp4_16 = ((PrtInt)0);
+            PrtInt TMP_tmp5_14 = ((PrtInt)0);
+            PrtInt TMP_tmp6_12 = ((PrtInt)0);
+            PrtInt TMP_tmp7_12 = ((PrtInt)0);
+            PrtFloat TMP_tmp8_10 = ((PrtFloat)0.0);
+            PrtFloat TMP_tmp9_8 = ((PrtFloat)0.0);
+            PrtBool TMP_tmp10_6 = ((PrtBool)false);
+            TMP_tmp0_33 = (PrtInt)(((PrtNamedTuple)response_11)["vertical_movement"]);
+            TMP_tmp1_29 = (PrtInt)(((PrtNamedTuple)response_11)["horizontal_movement"]);
+            TMP_tmp2_23 = (PrtInt)((TMP_tmp0_33) + (TMP_tmp1_29));
+            TMP_tmp3_18 = (PrtFloat)((TMP_tmp2_23));
+            cumulative_movement = TMP_tmp3_18;
+            TMP_tmp4_16 = (PrtInt)(((PrtNamedTuple)response_11)["vertical_movement"]);
+            TMP_tmp5_14 = (PrtInt)((drone_altitude_3) + (TMP_tmp4_16));
+            drone_altitude_3 = TMP_tmp5_14;
+            TMP_tmp6_12 = (PrtInt)(((PrtNamedTuple)response_11)["horizontal_movement"]);
+            TMP_tmp7_12 = (PrtInt)((drone_horizontal_distance_to_origin_3) + (TMP_tmp6_12));
+            drone_horizontal_distance_to_origin_3 = TMP_tmp7_12;
+            TMP_tmp8_10 = (PrtFloat)((cumulative_movement) * (power_consumption_rate));
+            TMP_tmp9_8 = (PrtFloat)((battery_percentage_2) - (TMP_tmp8_10));
+            battery_percentage_2 = TMP_tmp9_8;
+            TMP_tmp10_6 = (PrtBool)((battery_percentage_2) <= (landing_threshold_2));
+            if (TMP_tmp10_6)
+            {
+                currentMachine.TryGotoState<GeoFenceDisabled>();
+                return;
+            }
+        }
+        public void Anon_42(Event currentMachine_dequeuedEvent)
+        {
+            GeoFenceConflictSpec currentMachine = this;
+        }
+        public void Anon_43(Event currentMachine_dequeuedEvent)
+        {
+            GeoFenceConflictSpec currentMachine = this;
+            PrtBool TMP_tmp0_34 = ((PrtBool)false);
+            PrtString TMP_tmp1_30 = ((PrtString)"");
+            PrtBool TMP_tmp2_24 = ((PrtBool)false);
+            PrtString TMP_tmp3_19 = ((PrtString)"");
+            PrtString TMP_tmp4_17 = ((PrtString)"");
+            TMP_tmp0_34 = (PrtBool)((PrtValues.SafeEquals(drone_horizontal_distance_to_origin_3,((PrtInt)0))));
+            TMP_tmp1_30 = (PrtString)(((PrtString) String.Format("[conflict spec machine] drone did not return to origin (horizontal)")));
+            currentMachine.TryAssert(TMP_tmp0_34,"Assertion Failed: " + TMP_tmp1_30);
+            TMP_tmp2_24 = (PrtBool)((PrtValues.SafeEquals(drone_altitude_3,((PrtInt)0))));
+            TMP_tmp3_19 = (PrtString)(((PrtString) String.Format("[conflict spec machine] drone did not return to origin (horizontal)")));
+            currentMachine.TryAssert(TMP_tmp2_24,"Assertion Failed: " + TMP_tmp3_19);
+            TMP_tmp4_17 = (PrtString)(((PrtString) String.Format("hello")));
+            currentMachine.TryAssert(((PrtBool)false),"Assertion Failed: " + TMP_tmp4_17);
+            throw new PUnreachableCodeException();
+        }
         [Start]
+        [OnEventDoAction(typeof(eStartGeoFence), nameof(Anon_40))]
         class Init_7 : State
+        {
+        }
+        [OnEventDoAction(typeof(eDroneMovementResponse), nameof(Anon_41))]
+        [OnEventDoAction(typeof(eRequestDroneMovement), nameof(Anon_42))]
+        [OnEventDoAction(typeof(eFenceReached), nameof(Anon_42))]
+        [OnEventDoAction(typeof(eFenceDistanced), nameof(Anon_42))]
+        class GeoFenceEnabled_1 : State
+        {
+        }
+        [OnEntry(nameof(Anon_43))]
+        class GeoFenceDisabled : State
         {
         }
     }
@@ -1521,7 +1624,7 @@ namespace PImplementation
 {
     internal partial class BatteryFailSafeSpec : PMonitor
     {
-        private PrtInt landing_threshold_2 = ((PrtInt)0);
+        private PrtInt landing_threshold_3 = ((PrtInt)0);
         private PrtInt current_battery = ((PrtInt)0);
         static BatteryFailSafeSpec() {
             observes.Add(nameof(eLanded));
@@ -1530,60 +1633,60 @@ namespace PImplementation
             observes.Add(nameof(eUpdateBatteryPercentage));
         }
         
-        public void Anon_39(Event currentMachine_dequeuedEvent)
+        public void Anon_44(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
             PrtNamedTuple startBatteryFailSafeResponse = (PrtNamedTuple)(gotoPayload ?? ((PEvent)currentMachine_dequeuedEvent).Payload);
             this.gotoPayload = null;
-            PrtInt TMP_tmp0_32 = ((PrtInt)0);
-            PrtInt TMP_tmp1_29 = ((PrtInt)0);
+            PrtInt TMP_tmp0_35 = ((PrtInt)0);
+            PrtInt TMP_tmp1_31 = ((PrtInt)0);
             current_battery = (PrtInt)(((PrtInt)100));
-            TMP_tmp0_32 = (PrtInt)(((PrtNamedTuple)startBatteryFailSafeResponse)["landing_threshold_amount"]);
-            TMP_tmp1_29 = (PrtInt)(((PrtInt)((IPrtValue)TMP_tmp0_32)?.Clone()));
-            landing_threshold_2 = TMP_tmp1_29;
+            TMP_tmp0_35 = (PrtInt)(((PrtNamedTuple)startBatteryFailSafeResponse)["landing_threshold_amount"]);
+            TMP_tmp1_31 = (PrtInt)(((PrtInt)((IPrtValue)TMP_tmp0_35)?.Clone()));
+            landing_threshold_3 = TMP_tmp1_31;
             currentMachine.TryGotoState<InAir>();
             return;
         }
-        public void Anon_40(Event currentMachine_dequeuedEvent)
+        public void Anon_45(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
-            PrtInt TMP_tmp0_33 = ((PrtInt)0);
-            PrtInt TMP_tmp1_30 = ((PrtInt)0);
-            PrtString TMP_tmp2_23 = ((PrtString)"");
-            TMP_tmp0_33 = (PrtInt)((current_battery) - (((PrtInt)1)));
-            current_battery = TMP_tmp0_33;
-            TMP_tmp1_30 = (PrtInt)(((PrtInt)((IPrtValue)current_battery)?.Clone()));
-            TMP_tmp2_23 = (PrtString)(((PrtString) String.Format("[spec machine] battery updated, battery = {0}",TMP_tmp1_30)));
-            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp2_23);
+            PrtInt TMP_tmp0_36 = ((PrtInt)0);
+            PrtInt TMP_tmp1_32 = ((PrtInt)0);
+            PrtString TMP_tmp2_25 = ((PrtString)"");
+            TMP_tmp0_36 = (PrtInt)((current_battery) - (((PrtInt)1)));
+            current_battery = TMP_tmp0_36;
+            TMP_tmp1_32 = (PrtInt)(((PrtInt)((IPrtValue)current_battery)?.Clone()));
+            TMP_tmp2_25 = (PrtString)(((PrtString) String.Format("[spec machine] battery updated, battery = {0}",TMP_tmp1_32)));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp2_25);
             currentMachine.TryGotoState<InAir>();
             return;
         }
-        public void Anon_41(Event currentMachine_dequeuedEvent)
+        public void Anon_46(Event currentMachine_dequeuedEvent)
         {
             BatteryFailSafeSpec currentMachine = this;
-            PrtString TMP_tmp0_34 = ((PrtString)"");
-            PrtBool TMP_tmp1_31 = ((PrtBool)false);
-            PrtString TMP_tmp2_24 = ((PrtString)"");
-            TMP_tmp0_34 = (PrtString)(((PrtString) String.Format("spec machine entered landed state")));
-            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_34);
-            TMP_tmp1_31 = (PrtBool)((current_battery) >= (landing_threshold_2));
-            TMP_tmp2_24 = (PrtString)(((PrtString) String.Format("[spec machine] battery level is below safe landing threshold")));
-            currentMachine.TryAssert(TMP_tmp1_31,"Assertion Failed: " + TMP_tmp2_24);
+            PrtString TMP_tmp0_37 = ((PrtString)"");
+            PrtBool TMP_tmp1_33 = ((PrtBool)false);
+            PrtString TMP_tmp2_26 = ((PrtString)"");
+            TMP_tmp0_37 = (PrtString)(((PrtString) String.Format("spec machine entered landed state")));
+            PModule.runtime.Logger.WriteLine("<PrintLog> " + TMP_tmp0_37);
+            TMP_tmp1_33 = (PrtBool)((current_battery) >= (landing_threshold_3));
+            TMP_tmp2_26 = (PrtString)(((PrtString) String.Format("[spec machine] battery level is below safe landing threshold")));
+            currentMachine.TryAssert(TMP_tmp1_33,"Assertion Failed: " + TMP_tmp2_26);
         }
         [Start]
-        [OnEventDoAction(typeof(eStartBatteryFailSafe), nameof(Anon_39))]
+        [OnEventDoAction(typeof(eStartBatteryFailSafe), nameof(Anon_44))]
         class Init_8 : State
         {
         }
         [Hot]
-        [OnEventDoAction(typeof(eUpdateBatteryPercentage), nameof(Anon_40))]
+        [OnEventDoAction(typeof(eUpdateBatteryPercentage), nameof(Anon_45))]
         [OnEventGotoState(typeof(eLanding), typeof(InAir))]
         [OnEventGotoState(typeof(eLanded), typeof(Landed_2))]
         class InAir : State
         {
         }
         [Cold]
-        [OnEntry(nameof(Anon_41))]
+        [OnEntry(nameof(Anon_46))]
         class Landed_2 : State
         {
         }
@@ -1638,19 +1741,19 @@ namespace PImplementation
             this.creates.Add(nameof(I_BatteryFailSafe));
         }
         
-        public void Anon_42(Event currentMachine_dequeuedEvent)
+        public void Anon_47(Event currentMachine_dequeuedEvent)
         {
             Test_BatteryFailSafe currentMachine = this;
-            PrtInt TMP_tmp0_35 = ((PrtInt)0);
-            TMP_tmp0_35 = (PrtInt)(((PrtInt)20));
-            currentMachine.CreateInterface<I_BatteryFailSafe>(currentMachine, TMP_tmp0_35);
+            PrtInt TMP_tmp0_38 = ((PrtInt)0);
+            TMP_tmp0_38 = (PrtInt)(((PrtInt)20));
+            currentMachine.CreateInterface<I_BatteryFailSafe>(currentMachine, TMP_tmp0_38);
         }
         [Start]
         [OnEntry(nameof(InitializeParametersFunction))]
         [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_9))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_42))]
+        [OnEntry(nameof(Anon_47))]
         class Init_9 : State
         {
         }
@@ -1705,7 +1808,7 @@ namespace PImplementation
             this.creates.Add(nameof(I_GeoFence));
         }
         
-        public void Anon_43(Event currentMachine_dequeuedEvent)
+        public void Anon_48(Event currentMachine_dequeuedEvent)
         {
             Test_GeoFence currentMachine = this;
             currentMachine.CreateInterface<I_GeoFence>(currentMachine);
@@ -1715,7 +1818,7 @@ namespace PImplementation
         [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_10))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_43))]
+        [OnEntry(nameof(Anon_48))]
         class Init_10 : State
         {
         }
@@ -1773,25 +1876,25 @@ namespace PImplementation
             this.creates.Add(nameof(I_PowerManagement));
         }
         
-        public void Anon_44(Event currentMachine_dequeuedEvent)
+        public void Anon_49(Event currentMachine_dequeuedEvent)
         {
             Test_PowerManagement currentMachine = this;
-            PMachineValue TMP_tmp0_36 = null;
-            PMachineValue TMP_tmp1_32 = null;
-            PMachineValue TMP_tmp2_25 = null;
-            TMP_tmp0_36 = (PMachineValue)(currentMachine.CreateInterface<I_PowerManagement>( currentMachine));
-            powerManager_2 = TMP_tmp0_36;
-            TMP_tmp1_32 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
-            currentMachine.CreateInterface<I_BatteryFailSafeModified>(currentMachine, TMP_tmp1_32);
-            TMP_tmp2_25 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
-            currentMachine.CreateInterface<I_GeoFenceModified>(currentMachine, TMP_tmp2_25);
+            PMachineValue TMP_tmp0_39 = null;
+            PMachineValue TMP_tmp1_34 = null;
+            PMachineValue TMP_tmp2_27 = null;
+            TMP_tmp0_39 = (PMachineValue)(currentMachine.CreateInterface<I_PowerManagement>( currentMachine));
+            powerManager_2 = TMP_tmp0_39;
+            TMP_tmp1_34 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
+            currentMachine.CreateInterface<I_BatteryFailSafeModified>(currentMachine, TMP_tmp1_34);
+            TMP_tmp2_27 = (PMachineValue)(((PMachineValue)((IPrtValue)powerManager_2)?.Clone()));
+            currentMachine.CreateInterface<I_GeoFenceModified>(currentMachine, TMP_tmp2_27);
         }
         [Start]
         [OnEntry(nameof(InitializeParametersFunction))]
         [OnEventGotoState(typeof(ConstructorEvent), typeof(Init_11))]
         class __InitState__ : State { }
         
-        [OnEntry(nameof(Anon_44))]
+        [OnEntry(nameof(Anon_49))]
         class Init_11 : State
         {
         }
@@ -1864,21 +1967,71 @@ namespace PImplementation
         
         public static void InitializeMonitorObserves() {
             PModule.monitorObserves.Clear();
-            PModule.monitorObserves[nameof(GeoFenceSpec)] = new List<string>();
-            PModule.monitorObserves[nameof(GeoFenceSpec)].Add(nameof(eDroneMovementResponse));
-            PModule.monitorObserves[nameof(GeoFenceSpec)].Add(nameof(eFenceDistanced));
-            PModule.monitorObserves[nameof(GeoFenceSpec)].Add(nameof(eFenceReached));
-            PModule.monitorObserves[nameof(GeoFenceSpec)].Add(nameof(eRequestDroneMovement));
-            PModule.monitorObserves[nameof(GeoFenceSpec)].Add(nameof(eStartGeoFence));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)] = new List<string>();
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eDroneMovementResponse));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eFenceDistanced));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eFenceReached));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eRequestDroneMovement));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eStartGeoFence));
         }
         
         public static void InitializeMonitorMap(IActorRuntime runtime) {
             PModule.monitorMap.Clear();
             PModule.monitorMap[nameof(I_GeoFence)] = new List<Type>();
-            PModule.monitorMap[nameof(I_GeoFence)].Add(typeof(GeoFenceSpec));
+            PModule.monitorMap[nameof(I_GeoFence)].Add(typeof(GeoFenceConflictSpec));
             PModule.monitorMap[nameof(I_Test_GeoFence)] = new List<Type>();
-            PModule.monitorMap[nameof(I_Test_GeoFence)].Add(typeof(GeoFenceSpec));
-            runtime.RegisterMonitor<GeoFenceSpec>();
+            PModule.monitorMap[nameof(I_Test_GeoFence)].Add(typeof(GeoFenceConflictSpec));
+            runtime.RegisterMonitor<GeoFenceConflictSpec>();
+        }
+        
+        
+        [PChecker.SystematicTesting.Test]
+        public static void Execute(IActorRuntime runtime) {
+            runtime.RegisterLog(new PLogFormatter());
+            PModule.runtime = runtime;
+            PHelper.InitializeInterfaces();
+            PHelper.InitializeEnums();
+            InitializeLinkMap();
+            InitializeInterfaceDefMap();
+            InitializeMonitorMap(runtime);
+            InitializeMonitorObserves();
+            runtime.CreateActor(typeof(_GodMachine), new _GodMachine.Config(typeof(Test_GeoFence)));
+        }
+    }
+}
+namespace PImplementation
+{
+    public class geofenceconflict {
+        public static void InitializeLinkMap() {
+            PModule.linkMap.Clear();
+            PModule.linkMap[nameof(I_GeoFence)] = new Dictionary<string, string>();
+            PModule.linkMap[nameof(I_Test_GeoFence)] = new Dictionary<string, string>();
+            PModule.linkMap[nameof(I_Test_GeoFence)].Add(nameof(I_GeoFence), nameof(I_GeoFence));
+        }
+        
+        public static void InitializeInterfaceDefMap() {
+            PModule.interfaceDefinitionMap.Clear();
+            PModule.interfaceDefinitionMap.Add(nameof(I_GeoFence), typeof(GeoFence));
+            PModule.interfaceDefinitionMap.Add(nameof(I_Test_GeoFence), typeof(Test_GeoFence));
+        }
+        
+        public static void InitializeMonitorObserves() {
+            PModule.monitorObserves.Clear();
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)] = new List<string>();
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eDroneMovementResponse));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eFenceDistanced));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eFenceReached));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eRequestDroneMovement));
+            PModule.monitorObserves[nameof(GeoFenceConflictSpec)].Add(nameof(eStartGeoFence));
+        }
+        
+        public static void InitializeMonitorMap(IActorRuntime runtime) {
+            PModule.monitorMap.Clear();
+            PModule.monitorMap[nameof(I_GeoFence)] = new List<Type>();
+            PModule.monitorMap[nameof(I_GeoFence)].Add(typeof(GeoFenceConflictSpec));
+            PModule.monitorMap[nameof(I_Test_GeoFence)] = new List<Type>();
+            PModule.monitorMap[nameof(I_Test_GeoFence)].Add(typeof(GeoFenceConflictSpec));
+            runtime.RegisterMonitor<GeoFenceConflictSpec>();
         }
         
         
@@ -1927,6 +2080,8 @@ namespace PImplementation
             PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eDroneMovementDistanceResponse));
             PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eFenceRadiusRequest));
             PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eFenceRadiusResponse));
+            PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eLanded));
+            PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eLanding));
             PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eUpdateDroneBatteryRequest));
             PModule.monitorObserves[nameof(PowerManagementSpec)].Add(nameof(eUpdateDroneMovementDistanceAndPosition));
         }

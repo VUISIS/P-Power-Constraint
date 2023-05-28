@@ -1,14 +1,71 @@
-Total event coverage: 0.0%
-==========================
-Monitor: PImplementation.PowerManagementSpec
-============================================
+Total event coverage: 33.3%
+===========================
+StateMachine: PImplementation.GeoFence
+======================================
+Event coverage: 50.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.GeoFence+ConstructorEvent
+		Events sent: PImplementation.GeoFence+ConstructorEvent
+		Next states: Init_2
+
+	State: Init_2
+		State has no expected events, so coverage is 100%
+		Events sent: PImplementation.eStartGeoFence
+		Previous states: __InitState__
+		Next states: Monitoring_1
+
+	State: Monitoring_1
+		State event coverage: 33.3%
+		Events received: PImplementation.eStartGeoFence
+		Events sent: PImplementation.eRequestDroneMovement
+		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced
+		Previous states: Init_2
+		Next states: GenerateMovement
+
+	State: Holding is uncovered
+		Events not covered: PImplementation.eFenceReached
+
+	State: GenerateMovement
+		State event coverage: 100.0%
+		Events received: PImplementation.eRequestDroneMovement
+		Previous states: Monitoring_1
+
+Monitor: PImplementation.GeoFenceSpec
+=====================================
 Event coverage: 0.0%
 
-	State: Init_5
-		State has no expected events, so coverage is 100%
-		Next states: WaitingForRequests_1
+	State: Init_6 is uncovered
+		Events received: eStartGeoFence
+		Events not covered: PImplementation.eStartGeoFence
+		Previous states: Init_6
+		Next states: GeoFenceEnabled, Init_6
 
-	State: WaitingForRequests_1 is uncovered
-		Events not covered: PImplementation.eBatteryThresholdRequest, PImplementation.eBatteryThresholdResponse, PImplementation.eDroneMovementDistanceRequest, PImplementation.eDroneMovementDistanceResponse, PImplementation.eFenceRadiusRequest, PImplementation.eFenceRadiusResponse, PImplementation.eUpdateDroneBatteryRequest, PImplementation.eUpdateDroneMovementDistanceAndPosition
-		Previous states: Init_5
+	State: GeoFenceEnabled is uncovered
+		Events received: eDroneMovementResponse, eRequestDroneMovement
+		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
+		Previous states: GeoFenceEnabled, Init_6
+		Next states: GeoFenceEnabled
+
+StateMachine: PImplementation.Test_GeoFence
+===========================================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: PImplementation.Test_GeoFence+ConstructorEvent
+		Events sent: PImplementation.Test_GeoFence+ConstructorEvent
+		Next states: Init_10
+
+	State: Init_10
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
+
+StateMachine: Plang.CSharpRuntime._GodMachine
+=============================================
+Event coverage: 100.0%
+
+	State: Init
+		State has no expected events, so coverage is 100%
 

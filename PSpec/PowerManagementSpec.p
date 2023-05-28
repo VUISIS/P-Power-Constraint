@@ -25,7 +25,8 @@ spec PowerManagementSpec observes
   eFenceRadiusRequest,
   eFenceRadiusResponse,
   eUpdateDroneMovementDistanceAndPosition,
-  eFenceRadiusResponse {
+  eFenceRadiusResponse,
+  eLanding, eLanded {
 
     // parameters that the spec machine cares about
     // battery percentage and drone position
@@ -119,6 +120,10 @@ spec PowerManagementSpec observes
 
     on eFenceRadiusResponse do (response: tFenceRadiusResponse) {
       fenceRadius = response.fenceRadius;
+    }
+
+    on eLanding, eLanded do {
+      // do nothing
     }
   }
 }
