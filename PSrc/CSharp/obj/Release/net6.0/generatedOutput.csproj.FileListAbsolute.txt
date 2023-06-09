@@ -1,0 +1,5 @@
+/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PSrc/CSharp/obj/Release/net6.0/generatedOutput.csproj.AssemblyReference.cache
+/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PSrc/CSharp/obj/Release/net6.0/generatedOutput.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PSrc/CSharp/obj/Release/net6.0/generatedOutput.AssemblyInfoInputs.cache
+/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PSrc/CSharp/obj/Release/net6.0/generatedOutput.AssemblyInfo.cs
+/Users/sychoo/Downloads/P-lang/Tutorial/PowerConstraint/PSrc/CSharp/obj/Release/net6.0/generatedOutput.csproj.CoreCompileInputs.cache

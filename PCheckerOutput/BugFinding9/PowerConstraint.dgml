@@ -1,13 +1,54 @@
 ﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
   <Nodes>
-    <Node Id='PImplementation.PowerManagementSpec' Label='PImplementation.PowerManagementSpec' Category='Monitor' Group='Expanded'/>
-    <Node Id='PImplementation.PowerManagementSpec.Init_5' Label='Init_5'/>
-    <Node Id='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='WaitingForRequests_1'/>
+    <Node Id='PImplementation.GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFence.GenerateMovement' Label='GenerateMovement'/>
+    <Node Id='PImplementation.GeoFence.Holding' Label='Holding'/>
+    <Node Id='PImplementation.GeoFence.Init_2' Label='Init_2'/>
+    <Node Id='PImplementation.GeoFence.Monitoring_1' Label='Monitoring_1'/>
+    <Node Id='PImplementation.GeoFence.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec' Label='PImplementation.GeoFenceConflictSpec' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='GeoFenceEnabled_1'/>
+    <Node Id='PImplementation.GeoFenceConflictSpec.Init_7' Label='Init_7'/>
+    <Node Id='PImplementation.Test_GeoFence' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.Test_GeoFence.Init_10' Label='Init_10'/>
+    <Node Id='PImplementation.Test_GeoFence.__InitState__' Label='__InitState__'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
   </Nodes>
   <Links>
-    <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.Init_5' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagementSpec' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Category='Contains'/>
-    <Link Source='PImplementation.PowerManagementSpec.Init_5' Target='PImplementation.PowerManagementSpec.WaitingForRequests_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.GenerateMovement' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Holding' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Init_2' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.Monitoring_1' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence' Target='PImplementation.GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFence.Monitoring_1' Label='eDroneMovementResponse' Index='1' EventId='PImplementation.eDroneMovementResponse' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.GenerateMovement' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eDroneMovementResponse' Index='0' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFence.Monitoring_1' Label='eFenceDistanced' Index='1' EventId='PImplementation.eFenceDistanced' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.Holding' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceDistanced' Index='0' EventId='eFenceDistanced'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFence.Monitoring_1' Label='eStartGeoFence' Index='1' EventId='PImplementation.eStartGeoFence' HandledBy='Monitoring_1'/>
+    <Link Source='PImplementation.GeoFence.Init_2' Target='PImplementation.GeoFenceConflictSpec.Init_7' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.GenerateMovement' Label='eRequestDroneMovement' Index='1' EventId='PImplementation.eRequestDroneMovement' HandledBy='GenerateMovement'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.Holding' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFence.Holding' Label='eFenceReached' Index='1' EventId='PImplementation.eFenceReached' HandledBy='Holding'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFence.Monitoring_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceReached' Index='1' EventId='eFenceReached'/>
+    <Link Source='PImplementation.GeoFence.__InitState__' Target='PImplementation.GeoFence.Init_2' Label='ConstructorEvent' Index='0' EventId='PImplementation.GeoFence+ConstructorEvent'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec' Target='PImplementation.GeoFenceConflictSpec.Init_7' Category='Contains'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eRequestDroneMovement' Index='0' EventId='eRequestDroneMovement'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eDroneMovementResponse' Index='1' EventId='eDroneMovementResponse'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceReached' Index='2' EventId='eFenceReached'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='eFenceDistanced' Index='3' EventId='eFenceDistanced'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.Init_7' Target='PImplementation.GeoFenceConflictSpec.GeoFenceEnabled_1' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.GeoFenceConflictSpec.Init_7' Target='PImplementation.GeoFenceConflictSpec.Init_7' Label='eStartGeoFence' Index='0' EventId='eStartGeoFence'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.Init_10' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence' Target='PImplementation.Test_GeoFence.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.Test_GeoFence.__InitState__' Target='PImplementation.Test_GeoFence.Init_10' Label='ConstructorEvent' Index='0' EventId='PImplementation.Test_GeoFence+ConstructorEvent'/>
+    <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
   </Links>
   <Styles>
     <Style TargetType="Node" GroupLabel="Error" ValueLabel="True">

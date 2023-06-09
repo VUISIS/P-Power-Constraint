@@ -1,8 +1,8 @@
-Total event coverage: 33.3%
+Total event coverage: 58.3%
 ===========================
 StateMachine: PImplementation.GeoFence
 ======================================
-Event coverage: 50.0%
+Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -17,36 +17,44 @@ Event coverage: 50.0%
 		Next states: Monitoring_1
 
 	State: Monitoring_1
-		State event coverage: 33.3%
-		Events received: PImplementation.eStartGeoFence
-		Events sent: PImplementation.eRequestDroneMovement
-		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced
-		Previous states: Init_2
-		Next states: GenerateMovement
+		State event coverage: 100.0%
+		Events received: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eStartGeoFence
+		Events sent: PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
+		Previous states: GenerateMovement, Holding, Init_2
+		Next states: GenerateMovement, Holding
 
-	State: Holding is uncovered
-		Events not covered: PImplementation.eFenceReached
+	State: Holding
+		State event coverage: 100.0%
+		Events received: PImplementation.eFenceReached
+		Events sent: PImplementation.eFenceDistanced
+		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
 	State: GenerateMovement
 		State event coverage: 100.0%
 		Events received: PImplementation.eRequestDroneMovement
+		Events sent: PImplementation.eDroneMovementResponse
 		Previous states: Monitoring_1
+		Next states: Monitoring_1
 
-Monitor: PImplementation.GeoFenceSpec
-=====================================
+Monitor: PImplementation.GeoFenceConflictSpec
+=============================================
 Event coverage: 0.0%
 
-	State: Init_6 is uncovered
+	State: Init_7 is uncovered
 		Events received: eStartGeoFence
 		Events not covered: PImplementation.eStartGeoFence
-		Previous states: Init_6
-		Next states: GeoFenceEnabled, Init_6
+		Previous states: Init_7
+		Next states: GeoFenceEnabled_1, Init_7
 
-	State: GeoFenceEnabled is uncovered
-		Events received: eDroneMovementResponse, eRequestDroneMovement
+	State: GeoFenceEnabled_1 is uncovered
+		Events received: eDroneMovementResponse, eFenceDistanced, eFenceReached, eRequestDroneMovement
 		Events not covered: PImplementation.eDroneMovementResponse, PImplementation.eFenceDistanced, PImplementation.eFenceReached, PImplementation.eRequestDroneMovement
-		Previous states: GeoFenceEnabled, Init_6
-		Next states: GeoFenceEnabled
+		Previous states: GeoFenceEnabled_1, Init_7
+		Next states: GeoFenceEnabled_1
+
+	State: GeoFenceDisabled
+		State has no expected events, so coverage is 100%
 
 StateMachine: PImplementation.Test_GeoFence
 ===========================================
